@@ -12,7 +12,7 @@ namespace BlogForPeace.Core.DataModel
             Address = address;
         }
 
-        string IdentityId { get; set; }
+        public string IdentityId { get; set; }
         public string Email { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }

@@ -16,5 +16,6 @@ namespace BlogForPeace.Core.DataModel
         public string Message { get; set; }
         public int Upvotes { get; set; } = 0;
         public int Downvotes { get; set; } = 0;
+        public virtual Users Author { get; set; } = null!;
     }
 }

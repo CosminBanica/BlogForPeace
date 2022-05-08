@@ -1,12 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BlogForPeace.Core.DataModel;
+using BlogForPeace.Infrastructure.Data.EntityConfigurations;
+using Microsoft.EntityFrameworkCore;
 
 namespace BlogForPeace.Infrastructure.Data
 {
-    internal class BlogForPeaceContext
+    public class BlogForPeaceContext : DbContext
     {
+        public BlogForPeaceContext(DbContextOptions<BlogForPeaceContext> options) : base(options)
+        {
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(BlogpostsConfiguration).Assembly);
+                        //.ApplyConfigurationsFromAssembly(typeof(UsersConfiguration).Assembly)
+                        //.ApplyConfigurationsFromAssembly(typeof(CommentsConfiguration).Assembly);
+        }
+
+        public DbSet<Users> Users => Set<Users>();
+        public DbSet<Blogposts> Blogposts => Set<Blogposts>();
+        public DbSet<Comments> Comments => Set<Comments>();
     }
 }
