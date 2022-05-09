@@ -1,34 +1,61 @@
+using BlogForPeace.Api.Authorization;
+using BlogForPeace.Api.Infrastructure;
+using BlogForPeace.Infrastructure.Data;
+using BlogForPeace.Api.Web;
+using MediatR;
+using System.Reflection;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+builder.Services.AddControllers(options =>
+{
+    options.Filters.Add<ApiResponseExceptionFilter>();
+});
+
+builder.Services.AddEndpointsApiExplorer();
+
+// Add Swagger with Bearer Configuration
+//builder.Services.AddSwaggerWithBearerConfig();
+builder.Services.AddSwaggerGen();
+
+// Add Authentication configuration
+//builder.AddAuthenticationAndAuthorization();
+
+// Add Database Context
+builder.AddBlogForPeaceDbContext();
+
+// Add MediatR
+builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
+
+// Add Repositories
+builder.Services.AddBlogForPeaceAggregateRepositories();
+
+// Add Api Features Handlers
+builder.Services.AddApiFeaturesHandlers();
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-
-app.UseHttpsRedirection();
-
-var summaries = new[]
+if (app.Environment.IsDevelopment())
 {
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
-
-app.MapGet("/weatherforecast", () =>
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
+else
 {
-    var forecast = Enumerable.Range(1, 5).Select(index =>
-       new WeatherForecast
-       (
-           DateTime.Now.AddDays(index),
-           Random.Shared.Next(-20, 55),
-           summaries[Random.Shared.Next(summaries.Length)]
-       ))
-        .ToArray();
-    return forecast;
-});
+    app.UseHttpsRedirection();
+}
+
+//app.UseAuthenticationAndAuthorization();
+
+app.UseHttpLogging();
+
+app.MapControllers();
+
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<BlogForPeaceContext>();
+    db.Database.EnsureCreated();
+}
 
 app.Run();
-
-internal record WeatherForecast(DateTime Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}

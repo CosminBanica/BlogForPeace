@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "BlogForPeace.Core": {
+      "commandName": "Project"
+    },
+    "Profile 1": {
+      "commandName": "Project",
+      "commandLineArgs": "BlogForPeace"
+    }
+  }
+}

@@ -8,6 +8,9 @@ namespace BlogForPeace.Infrastructure.Data.EntityConfigurations
         public override void Configure(EntityTypeBuilder<Blogposts> builder)
         {
             builder
+                .HasKey(x => x.Id);
+
+            builder
                 .Property(x => x.Title)
                 .IsRequired();
 

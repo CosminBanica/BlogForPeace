@@ -14,7 +14,6 @@ namespace BlogForPeace.Core.DataModel
         public string Title { get; set; }
         public string Text { get; set; }
         public string Location { get; set; }
-        public ICollection<Comments> Comments { get; set; } = new List<Comments>();
         public virtual ICollection<Tags> Tags { get; set; } = new List<Tags>();
     }
 }

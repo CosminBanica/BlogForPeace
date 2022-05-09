@@ -32,7 +32,7 @@ namespace BlogForPeace.Core.Domain.UserComments
                 throw new CommentNotFoundException(commentId);
             }
 
-            comment.Upvotes++;
+            comment.Upvotes.Add(aggregate);
 
             return new UserUpvotedCommentEvent(commentId);
         }
@@ -46,7 +46,7 @@ namespace BlogForPeace.Core.Domain.UserComments
                 throw new CommentNotFoundException(commentId);
             }
 
-            comment.Downvotes++;
+            comment.Downvotes.Add(aggregate);
 
             return new UserDownvotedCommentEvent(commentId);
         }

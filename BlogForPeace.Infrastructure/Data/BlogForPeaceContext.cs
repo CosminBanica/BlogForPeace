@@ -12,9 +12,9 @@ namespace BlogForPeace.Infrastructure.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfigurationsFromAssembly(typeof(BlogpostsConfiguration).Assembly);
-                        //.ApplyConfigurationsFromAssembly(typeof(UsersConfiguration).Assembly)
-                        //.ApplyConfigurationsFromAssembly(typeof(CommentsConfiguration).Assembly);
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(BlogpostsConfiguration).Assembly)
+                        .ApplyConfigurationsFromAssembly(typeof(UsersConfiguration).Assembly)
+                        .ApplyConfigurationsFromAssembly(typeof(CommentsConfiguration).Assembly);
         }
 
         public DbSet<Users> Users => Set<Users>();

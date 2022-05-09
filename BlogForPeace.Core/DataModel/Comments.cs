@@ -14,8 +14,9 @@ namespace BlogForPeace.Core.DataModel
         public int BlogpostId { get; set; }
         public int UserId { get; set; }
         public string Message { get; set; }
-        public int Upvotes { get; set; } = 0;
-        public int Downvotes { get; set; } = 0;
+        public ICollection<Users> Upvotes { get; set; } = new List<Users>();
+        public ICollection<Users> Downvotes { get; set; } = new List<Users>();
         public virtual Users Author { get; set; } = null!;
+        public virtual Blogposts Blogpost { get; set; } = null!;
     }
 }
