@@ -47,8 +47,6 @@
 
 	<ItemGroup>
 		<Folder Include="Features\Metrics\" />
-		<Folder Include="Features\Comments\" />
-		<Folder Include="Features\Profiles\" />
 	</ItemGroup>
 
 </Project>

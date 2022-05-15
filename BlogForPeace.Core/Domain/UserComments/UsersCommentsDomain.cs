@@ -9,11 +9,12 @@ namespace BlogForPeace.Core.Domain.UserComments
         {
         }
 
-        public void UpdateProfile(string email, string name, string address)
+        public void UpdateProfile(string email, string name, string address, ICollection<Tags> tags)
         {
             aggregate.Email = email;
             aggregate.Name = name;
             aggregate.Address = address;
+            aggregate.SubscribedTags = tags;
         }
 
         public UserCommentedOnPostEvent CommentOnPost(int blogpostId, string message)

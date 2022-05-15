@@ -35,7 +35,7 @@ namespace BlogForPeace.Api.Features.Blogposts
         }
 
         [HttpGet("viewAllBlogposts")]
-        //[Authorize]
+        [Authorize]
         public async Task<ActionResult<IEnumerable<BlogpostDto>>> ViewAllBlogpostsAsync(CancellationToken cancellationToken)
         {
             var blogposts = await viewAllBlogpostsQueryHandler.HandleAsync(cancellationToken);
@@ -44,7 +44,7 @@ namespace BlogForPeace.Api.Features.Blogposts
         }
 
         [HttpGet("viewBlogpost/{id}")]
-        //[Authorize]
+        [Authorize]
         public async Task<ActionResult<BlogpostsWithCommentsDto>> ViewBlogpostAsync([FromRoute] int id, CancellationToken cancellationToken)
         {
             var blogpost = await viewBlogpostQueryHandler.HandleAsync(id, cancellationToken);

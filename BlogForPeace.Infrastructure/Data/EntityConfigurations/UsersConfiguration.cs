@@ -32,6 +32,9 @@ namespace BlogForPeace.Infrastructure.Data.EntityConfigurations
                 .Property(x => x.Address)
                 .IsRequired();
 
+            builder
+                .HasMany(x => x.SubscribedTags);
+
             base.Configure(builder);
         }
     }

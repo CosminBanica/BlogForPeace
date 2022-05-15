@@ -19,5 +19,6 @@ namespace BlogForPeace.Core.DataModel
         public ICollection<Comments> Comments { get; set; } = new List<Comments>();
         public ICollection<Comments> Upvoted { get; set; } = new List<Comments>();
         public ICollection<Comments> Downvoted { get; set; } = new List<Comments>();
+        public ICollection<Tags> SubscribedTags { get; set; } = new List<Tags>();
     }
 }

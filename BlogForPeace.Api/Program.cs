@@ -15,11 +15,11 @@ builder.Services.AddControllers(options =>
 builder.Services.AddEndpointsApiExplorer();
 
 // Add Swagger with Bearer Configuration
-//builder.Services.AddSwaggerWithBearerConfig();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerWithBearerConfig();
+//builder.Services.AddSwaggerGen();
 
 // Add Authentication configuration
-//builder.AddAuthenticationAndAuthorization();
+builder.AddAuthenticationAndAuthorization();
 
 // Add Database Context
 builder.AddBlogForPeaceDbContext();
@@ -46,7 +46,7 @@ else
     app.UseHttpsRedirection();
 }
 
-//app.UseAuthenticationAndAuthorization();
+app.UseAuthenticationAndAuthorization();
 
 app.UseHttpLogging();
 

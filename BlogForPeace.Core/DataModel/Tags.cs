@@ -1,6 +1,8 @@
-﻿namespace BlogForPeace.Core.DataModel
+﻿using BlogForPeace.Core.SeedWork;
+
+namespace BlogForPeace.Core.DataModel
 {
-    public record Tags
+    public class Tags : Entity
     {
         public Tags(string name, string description)
         {

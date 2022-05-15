@@ -3,27 +3,20 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace BlogForPeace.Infrastructure.Data.EntityConfigurations
 {
-    internal class BlogpostsConfiguration : EntityConfiguration<Blogposts>
+    internal class TagConfiguration : EntityConfiguration<Tags>
     {
-        public override void Configure(EntityTypeBuilder<Blogposts> builder)
+        public override void Configure(EntityTypeBuilder<Tags> builder)
         {
             builder
                 .HasKey(x => x.Id);
 
             builder
-                .Property(x => x.Title)
+                .Property(x => x.Name)
                 .IsRequired();
 
             builder
-                .Property(x => x.Text)
+                .Property(x => x.Description)
                 .IsRequired();
-
-            builder
-                .Property(x => x.Location)
-                .IsRequired();
-
-            builder
-                .HasMany(x => x.Tags);
 
             base.Configure(builder);
         }

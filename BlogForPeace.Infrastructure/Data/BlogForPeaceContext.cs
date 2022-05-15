@@ -14,11 +14,13 @@ namespace BlogForPeace.Infrastructure.Data
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(BlogpostsConfiguration).Assembly)
                         .ApplyConfigurationsFromAssembly(typeof(UsersConfiguration).Assembly)
-                        .ApplyConfigurationsFromAssembly(typeof(CommentsConfiguration).Assembly);
+                        .ApplyConfigurationsFromAssembly(typeof(CommentsConfiguration).Assembly)
+                        .ApplyConfigurationsFromAssembly(typeof(Tags).Assembly);
         }
 
         public DbSet<Users> Users => Set<Users>();
         public DbSet<Blogposts> Blogposts => Set<Blogposts>();
         public DbSet<Comments> Comments => Set<Comments>();
+        public DbSet<Tags> Tags => Set<Tags>();
     }
 }

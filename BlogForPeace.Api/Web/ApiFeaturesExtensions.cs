@@ -1,7 +1,7 @@
 ﻿using BlogForPeace.Api.Features.Blogposts;
 //using BlogForPeace.Api.Features.Metrics;
-//using BlogForPeace.Api.Features.Profile;
-//using BlogForPeace.Api.Features.Comments;
+using BlogForPeace.Api.Features.Profiles;
+using BlogForPeace.Api.Features.Comment;
 
 namespace BlogForPeace.Api.Web
 {
@@ -15,11 +15,11 @@ namespace BlogForPeace.Api.Web
             //// Add Metrics Handlers
             //services.AddMetricsHandlers();
 
-            //// Add Profile Handlers
-            //services.AddProfilesHandlers();
+            // Add Profile Handlers
+            services.AddProfilesHandlers();
 
-            //// Add Comments Handlers
-            //services.AddCommentsHandlers();
+            // Add Comments Handlers
+            services.AddCommentsHandlers();
         }
     }
 }
