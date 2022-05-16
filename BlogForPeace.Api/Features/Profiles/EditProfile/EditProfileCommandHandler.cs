@@ -25,10 +25,10 @@ namespace BlogForPeace.Api.Features.Profiles.EditProfile
                 throw new ApiException(HttpStatusCode.Unauthorized, $"User with identity {command.Id} does not have a registered profile");
             }
 
+            user.RemoveTags();
             foreach (var tag in command.Tags)
             {
                 var userAddedTagEvent = user.AddTag(tag.Name, tag.Description);
-                await mediator.Publish(userAddedTagEvent, cancellationToken);
             }
 
             user.UpdateProfile(command.Email, command.Name, command.Address);

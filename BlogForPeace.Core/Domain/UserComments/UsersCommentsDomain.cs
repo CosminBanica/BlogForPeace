@@ -57,5 +57,10 @@ namespace BlogForPeace.Core.Domain.UserComments
 
             return new UserAddedTagEvent(name);
         }
+
+        public void RemoveTags()
+        {
+            aggregate.SubscribedTags.Clear();
+        }
     }
 }

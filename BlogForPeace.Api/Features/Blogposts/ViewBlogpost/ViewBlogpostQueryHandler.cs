@@ -28,7 +28,6 @@ namespace BlogForPeace.Api.Features.Blogposts.ViewBlogpost
 
             var comments = await dbContext.Comments
                 .AsNoTracking()
-                .Include(x => x.Author)
                 .Where(x => x.BlogpostId == blogpost.Id)
                 .ToListAsync(cancellationToken);
 

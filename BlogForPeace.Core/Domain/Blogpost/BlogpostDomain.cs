@@ -20,5 +20,10 @@ namespace BlogForPeace.Core.Domain.Blogpost
         {
             aggregate.Tags.Add(new Tags(name, description));
         }
+
+        public void RemoveTags()
+        {
+            aggregate.Tags.Clear();
+        }
     }
 }

@@ -23,6 +23,7 @@ namespace BlogForPeace.Api.Features.Blogposts.EditBlogpost
                 throw new ApiException(HttpStatusCode.NotFound, $"Blogpost with id {command.Id} not found!");
             }
 
+            blogpost.RemoveTags();
             foreach (var tag in command.Tags)
             {
                 blogpost.AddTag(tag.Name, tag.Description);
