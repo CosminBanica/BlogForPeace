@@ -2,13 +2,13 @@ name: .NET
 
 on:
   push:
-    branches: [ production ]
+    branches: [ idp_dev ]
   pull_request:
-    branches: [ production ]
+    branches: [ idp_dev ]
 
 jobs:
-  build:
-
+  test:
+    name: Test app
     runs-on: ubuntu-latest
 
     steps:
@@ -23,3 +23,23 @@ jobs:
       run: dotnet build --no-restore
     - name: Test
       run: dotnet test --no-build --verbosity normal
+
+  docker:
+    name: Build image & Publish on Docker Hub
+    runs-on: ubuntu-latest
+    needs: [test]
+    env:
+      REPO: ${{ secrets.DOCKER_REPO }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: 6.0.x
+      - name: Login to Docker Hub
+        run: docker login -u ${{ secrets.DOCKER_USER }}
+              -p ${{ secrets.DOCKER_PASS }}
+      - name: Build Docker image
+        run:docker build -t $REPO:latest -t $REPO:${GITHUB_SHA::8} -f ./Dockerfile .
+      - name: Publish Docker image
+        run: docker push $REPO
