@@ -1,0 +1,54 @@
+version: "3.8"
+
+services:
+    db_mssql:
+        image: mcr.microsoft.com/mssql/server:2019-latest
+        environment:
+            ACCEPT_EULA: "Y"
+            SA_PASSWORD: Parola1!strong
+            MSSQL_PID: Express
+        deploy:
+            placement:
+                constraints:
+                    - "node.role==manager"
+        volumes:
+            - db-volume:/var/opt/mssql
+        ports:
+            - 1433:1433
+        networks:
+            - bl_db
+
+    blogforpeace:
+        image: dotnet-img:latest
+        ports:
+            - "80:80"
+            - "7152:7152"
+        networks:
+            - bl_db
+
+    # mosquitto:
+    #     image: eclipse-mosquitto:latest
+    #     ports:
+    #         - "1883:1883"
+    #         - "9001:9001"
+    #     volumes:
+    #         - ./mosquitto.conf:/mosquitto/config/mosquitto.conf
+    #         - mosquitto_data:/mosquitto/data
+    #         - mosquitto_log:/mosquitto/log
+    #     networks:
+    #         - bl_mqtt
+    #         - proxy_mqtt
+
+volumes:
+    db-volume:
+    mosquitto_data:
+    mosquitto_log:
+
+networks:
+    proxy_bl:
+    proxy_mqtt:
+    bl_mqtt:
+    bl_db:
+    agent_network:
+        driver: overlay
+        attachable: true
