@@ -45,8 +45,4 @@
 		<ProjectReference Include="..\BlogForPeace.Infrastructure\BlogForPeace.Infrastructure.csproj" />
 	</ItemGroup>
 
-	<ItemGroup>
-		<Folder Include="Features\Metrics\" />
-	</ItemGroup>
-
 </Project>

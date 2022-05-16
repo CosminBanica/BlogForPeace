@@ -1,5 +1,6 @@
 ﻿using BlogForPeace.Api.Features.Profiles.RegisterProfile;
 using BlogForPeace.Api.Features.Profiles.ViewProfile;
+using BlogForPeace.Api.Features.Profiles.EditProfile;
 
 namespace BlogForPeace.Api.Features.Profiles
 {
@@ -9,6 +10,7 @@ namespace BlogForPeace.Api.Features.Profiles
         {
             services.AddTransient<IRegisterProfileCommandHandler, RegisterProfileCommandHandler>();
             services.AddTransient<IViewProfileQueryHandler, ViewProfileQueryHandler>();
+            services.AddTransient<IEditProfileCommandHandler, EditProfileCommandHandler>();
         }
     }
 }

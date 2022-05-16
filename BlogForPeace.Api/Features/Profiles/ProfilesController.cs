@@ -1,6 +1,7 @@
 ﻿using BlogForPeace.Api.Authorization;
 using BlogForPeace.Api.Features.Profiles.RegisterProfile;
 using BlogForPeace.Api.Features.Profiles.ViewProfile;
+using BlogForPeace.Api.Features.Profiles.EditProfile;
 using Microsoft.AspNetCore.Authorization;
 using BlogForPeace.Infrastructure.Data;
 using Microsoft.AspNetCore.Mvc;
@@ -20,17 +21,20 @@ namespace BlogForPeace.Api.Features.Profiles
     {
         private readonly IRegisterProfileCommandHandler registerProfileCommandHandler;
         private readonly IViewProfileQueryHandler viewProfileQueryHandler;
+        private readonly IEditProfileCommandHandler editProfileCommandHandler;
         private readonly BlogForPeaceContext dbContext;
         private readonly JWTConfig jwtConfig;
 
         public ProfilesController(
             IRegisterProfileCommandHandler _registerProfileCommandHandler, 
             IViewProfileQueryHandler _viewProfileQueryHandler,
+            IEditProfileCommandHandler _editProfileCommandHandler,
             BlogForPeaceContext _dbContext,
             IOptions<JWTConfig> _jwtConfig)
         {
             registerProfileCommandHandler = _registerProfileCommandHandler;
             viewProfileQueryHandler = _viewProfileQueryHandler;
+            editProfileCommandHandler = _editProfileCommandHandler;
             dbContext = _dbContext;
             jwtConfig = _jwtConfig.Value;
         }
@@ -105,6 +109,15 @@ namespace BlogForPeace.Api.Features.Profiles
             var profile = await viewProfileQueryHandler.HandleAsync(identityId, cancellationToken);
 
             return Ok(profile);
+        }
+
+        [HttpPut("editProfile")]
+        [Authorize]
+        public async Task<IActionResult> EditProfile([FromBody] EditProfileCommand command, CancellationToken cancellationToken)
+        {
+            await editProfileCommandHandler.HandleAsync(command, cancellationToken);
+
+            return Ok();
         }
     }
 }

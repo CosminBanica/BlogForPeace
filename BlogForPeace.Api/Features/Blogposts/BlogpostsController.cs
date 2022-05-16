@@ -1,6 +1,7 @@
 ﻿using BlogForPeace.Api.Features.Blogposts.AddBlogpost;
 using BlogForPeace.Api.Features.Blogposts.ViewAllBlogposts;
 using BlogForPeace.Api.Features.Blogposts.ViewBlogpost;
+using BlogForPeace.Api.Features.Blogposts.EditBlogpost;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
@@ -14,15 +15,18 @@ namespace BlogForPeace.Api.Features.Blogposts
         private readonly IAddBlogpostCommandHandler addBlogpostCommandHandler;
         private readonly IViewAllBlogpostsQueryHandler viewAllBlogpostsQueryHandler;
         private readonly IViewBlogpostQueryHandler viewBlogpostQueryHandler;
+        private readonly IEditBlogpostCommandHandler editBlogpostCommandHandler;
 
         public BlogpostsController(
             IAddBlogpostCommandHandler _addBlogpostCommandHandler,
             IViewAllBlogpostsQueryHandler _viewAllBlogpostsQueryHandler,
-            IViewBlogpostQueryHandler _viewBlogpostQueryHandler)
+            IViewBlogpostQueryHandler _viewBlogpostQueryHandler,
+            IEditBlogpostCommandHandler _editBlogpostCommandHandler)
         {
             this.addBlogpostCommandHandler = _addBlogpostCommandHandler;
             this.viewAllBlogpostsQueryHandler = _viewAllBlogpostsQueryHandler;
             this.viewBlogpostQueryHandler = _viewBlogpostQueryHandler;
+            this.editBlogpostCommandHandler = _editBlogpostCommandHandler;
         }
 
         [HttpPost("addBlogpost")]
@@ -32,6 +36,15 @@ namespace BlogForPeace.Api.Features.Blogposts
             await addBlogpostCommandHandler.HandleAsync(command, cancellationToken);
 
             return StatusCode((int)HttpStatusCode.Created);
+        }
+
+        [HttpPost("editBlogpost")]
+        //[Authorize(Policy = "AdminAccess")]
+        public async Task<IActionResult> EditBlogpostAsync([FromBody] EditBlogpostCommand command, CancellationToken cancellationToken)
+        {
+            await editBlogpostCommandHandler.HandleAsync(command, cancellationToken);
+
+            return StatusCode((int)HttpStatusCode.OK);
         }
 
         [HttpGet("viewAllBlogposts")]

@@ -9,12 +9,11 @@ namespace BlogForPeace.Core.Domain.UserComments
         {
         }
 
-        public void UpdateProfile(string email, string name, string address, ICollection<Tags> tags)
+        public void UpdateProfile(string email, string name, string address)
         {
             aggregate.Email = email;
             aggregate.Name = name;
             aggregate.Address = address;
-            aggregate.SubscribedTags = tags;
         }
 
         public UserCommentedOnPostEvent CommentOnPost(int blogpostId, string message)
@@ -50,6 +49,13 @@ namespace BlogForPeace.Core.Domain.UserComments
             comment.Downvotes.Add(aggregate);
 
             return new UserDownvotedCommentEvent(commentId);
+        }
+
+        public UserAddedTagEvent AddTag(string name, string description)
+        {
+            aggregate.SubscribedTags.Add(new Tags(name, description));
+
+            return new UserAddedTagEvent(name);
         }
     }
 }

@@ -9,12 +9,16 @@ namespace BlogForPeace.Core.Domain.Blogpost
         {
         }
 
-        public void UpdateBlogpost(string title, string text, string location, ICollection<Tags> tags)
+        public void UpdateBlogpost(string title, string text, string location)
         {
             aggregate.Title = title;
             aggregate.Text = text;
             aggregate.Location = location;
-            aggregate.Tags = tags;
+        }
+
+        public void AddTag(string name, string description)
+        {
+            aggregate.Tags.Add(new Tags(name, description));
         }
     }
 }
