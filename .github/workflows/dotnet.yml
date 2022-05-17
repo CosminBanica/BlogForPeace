@@ -2,9 +2,9 @@ name: .NET
 
 on:
   push:
-    branches: [ idp_dev ]
+    branches: [ idp_dev, production ]
   pull_request:
-    branches: [ idp_dev ]
+    branches: [ idp_dev, production ]
 
 jobs:
   test:
