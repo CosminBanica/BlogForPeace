@@ -32,6 +32,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{5D994487-E93
 		frontend\src\App.css = frontend\src\App.css
 		frontend\src\App.jsx = frontend\src\App.jsx
 		frontend\src\App.test.js = frontend\src\App.test.js
+		frontend\src\functions.js = frontend\src\functions.js
 		frontend\src\index.css = frontend\src\index.css
 		frontend\src\index.js = frontend\src\index.js
 		frontend\src\logo.svg = frontend\src\logo.svg
@@ -75,8 +76,16 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "pages", "pages", "{D591810F-BB54-401F-803B-ACE126E7E3A2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "User", "User", "{894FDF05-E325-4002-AF88-C2CED004B1FE}"
+	ProjectSection(SolutionItems) = preProject
+		frontend\src\pages\User\Account.jsx = frontend\src\pages\User\Account.jsx
+		frontend\src\pages\User\Blogposts.jsx = frontend\src\pages\User\Blogposts.jsx
+	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Account", "Account", "{EB80EC0C-76DB-4936-A656-C447D47E9143}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Admin", "Admin", "{EB80EC0C-76DB-4936-A656-C447D47E9143}"
+	ProjectSection(SolutionItems) = preProject
+		frontend\src\pages\Admin\Blogpost.jsx = frontend\src\pages\Admin\Blogpost.jsx
+		frontend\src\pages\Admin\Blogposts.jsx = frontend\src\pages\Admin\Blogposts.jsx
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "modals", "modals", "{DBE35767-E411-4F32-B509-AFA6976A80F2}"
 	ProjectSection(SolutionItems) = preProject

@@ -1,25 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import React from "react";
+import Router from "./utils/Routing";
+import "./styling/admin.tailwind.css";
+import "./styling/user.tailwind.css";
+import "./styling/global.tailwind.css";
+import Wrapper from "./utils/AuthWrapper";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+
+
+const App = () => {
+    return (
+        <Wrapper>
+            <Router />
+        </Wrapper>
+    );
+};
 
 export default App;
+
