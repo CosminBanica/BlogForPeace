@@ -8,8 +8,8 @@ services:
             SA_PASSWORD: Parola1!strong
             MSSQL_PID: Express
         deploy:
+            replicas: 1
             placement:
-                replicas: 1
                 constraints:
                     - "node.role==manager"
             update_config:
