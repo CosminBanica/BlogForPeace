@@ -30,13 +30,59 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{5D994487-E935-4B42-BCB3-C359C93EA052}"
 	ProjectSection(SolutionItems) = preProject
 		frontend\src\App.css = frontend\src\App.css
-		frontend\src\App.js = frontend\src\App.js
+		frontend\src\App.jsx = frontend\src\App.jsx
 		frontend\src\App.test.js = frontend\src\App.test.js
 		frontend\src\index.css = frontend\src\index.css
 		frontend\src\index.js = frontend\src\index.js
 		frontend\src\logo.svg = frontend\src\logo.svg
 		frontend\src\reportWebVitals.js = frontend\src\reportWebVitals.js
 		frontend\src\setupTests.js = frontend\src\setupTests.js
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "components", "components", "{1FC38030-8916-48C9-BE30-DE55914CCC2E}"
+	ProjectSection(SolutionItems) = preProject
+		frontend\src\components\BlogpostCard.jsx = frontend\src\components\BlogpostCard.jsx
+		frontend\src\components\Button.jsx = frontend\src\components\Button.jsx
+		frontend\src\components\Input.jsx = frontend\src\components\Input.jsx
+		frontend\src\components\Section.jsx = frontend\src\components\Section.jsx
+		frontend\src\components\Table.jsx = frontend\src\components\Table.jsx
+		frontend\src\components\Tags.jsx = frontend\src\components\Tags.jsx
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "assets", "assets", "{79E52E80-92B1-4694-9D89-7894E4B1CE3C}"
+	ProjectSection(SolutionItems) = preProject
+		frontend\src\assets\logo.svg = frontend\src\assets\logo.svg
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "styling", "styling", "{73278BDE-975A-409A-A8C9-630A6F077EF1}"
+	ProjectSection(SolutionItems) = preProject
+		frontend\src\styling\admin.tailwind.css = frontend\src\styling\admin.tailwind.css
+		frontend\src\styling\global.tailwind.css = frontend\src\styling\global.tailwind.css
+		frontend\src\styling\user.tailwind.css = frontend\src\styling\user.tailwind.css
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "utils", "utils", "{E4F207AB-4614-4A73-9A3D-05707106F21A}"
+	ProjectSection(SolutionItems) = preProject
+		frontend\src\utils\AdminHeader.jsx = frontend\src\utils\AdminHeader.jsx
+		frontend\src\utils\AdminLayout.jsx = frontend\src\utils\AdminLayout.jsx
+		frontend\src\utils\AdminMenu.jsx = frontend\src\utils\AdminMenu.jsx
+		frontend\src\utils\AuthWrapper.jsx = frontend\src\utils\AuthWrapper.jsx
+		frontend\src\utils\Routing.jsx = frontend\src\utils\Routing.jsx
+		frontend\src\utils\UserHeader.jsx = frontend\src\utils\UserHeader.jsx
+		frontend\src\utils\UserLayout.jsx = frontend\src\utils\UserLayout.jsx
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "pages", "pages", "{D591810F-BB54-401F-803B-ACE126E7E3A2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "User", "User", "{894FDF05-E325-4002-AF88-C2CED004B1FE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Account", "Account", "{EB80EC0C-76DB-4936-A656-C447D47E9143}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "modals", "modals", "{DBE35767-E411-4F32-B509-AFA6976A80F2}"
+	ProjectSection(SolutionItems) = preProject
+		frontend\src\components\modals\AccountModal.jsx = frontend\src\components\modals\AccountModal.jsx
+		frontend\src\components\modals\BlogpostModal.jsx = frontend\src\components\modals\BlogpostModal.jsx
+		frontend\src\components\modals\CommentModal.jsx = frontend\src\components\modals\CommentModal.jsx
 	EndProjectSection
 EndProject
 Global
@@ -64,6 +110,14 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{01DFF2A6-890E-45A6-AE38-1A40916CC383} = {B0A45482-BE21-4EA6-9F7C-33A0A38B485C}
 		{5D994487-E935-4B42-BCB3-C359C93EA052} = {B0A45482-BE21-4EA6-9F7C-33A0A38B485C}
+		{1FC38030-8916-48C9-BE30-DE55914CCC2E} = {5D994487-E935-4B42-BCB3-C359C93EA052}
+		{79E52E80-92B1-4694-9D89-7894E4B1CE3C} = {5D994487-E935-4B42-BCB3-C359C93EA052}
+		{73278BDE-975A-409A-A8C9-630A6F077EF1} = {5D994487-E935-4B42-BCB3-C359C93EA052}
+		{E4F207AB-4614-4A73-9A3D-05707106F21A} = {5D994487-E935-4B42-BCB3-C359C93EA052}
+		{D591810F-BB54-401F-803B-ACE126E7E3A2} = {5D994487-E935-4B42-BCB3-C359C93EA052}
+		{894FDF05-E325-4002-AF88-C2CED004B1FE} = {D591810F-BB54-401F-803B-ACE126E7E3A2}
+		{EB80EC0C-76DB-4936-A656-C447D47E9143} = {D591810F-BB54-401F-803B-ACE126E7E3A2}
+		{DBE35767-E411-4F32-B509-AFA6976A80F2} = {1FC38030-8916-48C9-BE30-DE55914CCC2E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {160B64A2-9BE0-4E5B-8D98-FA41B4AA1EC2}
