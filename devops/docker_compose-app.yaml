@@ -45,7 +45,7 @@ services:
             - bl_db
 
     mosquitto:
-        image: eclipse-mosquitto:latest
+        image: elrego1/blog_for_peace_mqtt:latest
         deploy:
             mode: replicated
             replicas: 1
@@ -59,7 +59,6 @@ services:
             - "1883:1883"
             - "9001:9001"
         volumes:
-            - ./mosquitto.conf:/mosquitto/config/mosquitto.conf
             - mosquitto_data:/mosquitto/data
             - mosquitto_log:/mosquitto/log
         networks:
