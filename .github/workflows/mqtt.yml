@@ -10,7 +10,6 @@ jobs:
   docker:
     name: Build image & Publish on Docker Hub
     runs-on: ubuntu-latest
-    needs: [test]
     env:
       REPO: elrego1/blog_for_peace_mqtt
     steps:
