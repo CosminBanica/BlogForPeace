@@ -7,10 +7,10 @@ const Section = ({ title, fields }) => {
       <div className="fields">
         {fields &&
           fields.map((field) => (
-            <>
-              <span className="field-key">{field.key}</span>
+            <span key={field.key}>
+              <span  className="field-key">{field.key}</span>
               <span>{field.value}</span>
-            </>
+            </span>
           ))}
       </div>
     </div>

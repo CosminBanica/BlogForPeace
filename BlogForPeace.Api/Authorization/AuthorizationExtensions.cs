@@ -16,13 +16,14 @@ namespace BlogForPeace.Api.Authorization
             {
                 options.Authority = builder.Configuration["Auth:Authority"];
                 options.Audience = builder.Configuration["Auth:Audience"];
-                options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters()
-                {
-                    ValidateAudience = false,
-                    ValidateIssuer = false,
-                    ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(builder.Configuration["JWTConfig:Key"]))
-                };
+                options.RequireHttpsMetadata = false;
+                //options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters()
+                //{
+                //    ValidateAudience = false,
+                //    ValidateIssuer = false,
+                //    ValidateIssuerSigningKey = true,
+                //    IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(builder.Configuration["JWTConfig:Key"]))
+                //};
             });
 
             // Add Authorization configuration

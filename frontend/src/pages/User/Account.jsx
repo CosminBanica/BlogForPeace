@@ -32,15 +32,34 @@ const Account = () => {
         },
     ];
 
+    const handleEditProfile = (form) => {
+        (async () => {
+            const accessToken = await getAccessTokenSilently();
+            axiosInstance
+                .post(routes.profile.editProfile, form, {
+                    headers: {
+                        Authorization: `Bearer ${accessToken}`,
+                    },
+                })
+                .then(() => getProfile());
+        })();
+    };
+
     const getProfile = useCallback(async () => {
         const accessToken = await getAccessTokenSilently();
         axiosInstance
-            .get(routes.profile.getProfile, {
+            .post(routes.profile.setupProfile, null, {
                 headers: {
                     Authorization: `Bearer ${accessToken}`,
-                },
-            })
-            .then(({ data }) => setProfile(data));
+                }
+            }, { timeout: 10000 })
+            .then(() => axiosInstance
+                .get(routes.profile.getProfile, {
+                    headers: {
+                        Authorization: `Bearer ${accessToken}`,
+                    },
+                })
+                .then(({ data }) => setProfile(data)));
     }, [getAccessTokenSilently]);
 
     useEffect(() => {
@@ -54,6 +73,7 @@ const Account = () => {
                 closeModal={() => {
                     setOpenedModal(false);
                 }}
+                submitForm={handleEditProfile}
             />
             <div className="row-between">
                 <h2>Jake Markel</h2>

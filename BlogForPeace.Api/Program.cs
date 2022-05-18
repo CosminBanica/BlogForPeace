@@ -12,11 +12,22 @@ builder.Services.AddControllers(options =>
     options.Filters.Add<ApiResponseExceptionFilter>();
 });
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: "DevelopmentCorsPolicy",
+        policy =>
+        {
+            policy.WithOrigins("http://localhost:3000")
+                .AllowAnyHeader()
+                .AllowAnyMethod();
+        });
+});
+
+
 builder.Services.AddEndpointsApiExplorer();
 
 // Add Swagger with Bearer Configuration
 builder.Services.AddSwaggerWithBearerConfig();
-//builder.Services.AddSwaggerGen();
 
 // Add Authentication configuration
 builder.AddAuthenticationAndAuthorization();
@@ -40,6 +51,7 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    app.UseCors("DevelopmentCorsPolicy");
 }
 else
 {
