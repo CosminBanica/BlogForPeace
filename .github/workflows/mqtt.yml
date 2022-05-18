@@ -17,6 +17,6 @@ jobs:
         run: docker login -u ${{ secrets.DOCKER_USER }}
               -p ${{ secrets.DOCKER_PASS }}
       - name: Build Docker image
-        run: docker build -t $REPO:latest -t $REPO:${GITHUB_SHA::8} -f ./Dockerfile-mqtt .
+        run: docker build -t elrego1/blog_for_peace_mqtt:latest -t elrego1/blog_for_peace_mqtt:${GITHUB_SHA::8} -f ./Dockerfile-mqtt .
       - name: Publish Docker image
         run: docker push $REPO
