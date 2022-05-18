@@ -29,9 +29,9 @@ services:
         image: elrego1/blog_for_peace:latest
         deploy:
             mode: replicated
-            replicas: 3
+            replicas: 2
             placement:
-                max_replicas_per_node: 2
+                max_replicas_per_node: 3
             update_config:
                 parallelism: 1
                 order: start-first
@@ -44,18 +44,27 @@ services:
         networks:
             - bl_db
 
-    # mosquitto:
-    #     image: eclipse-mosquitto:latest
-    #     ports:
-    #         - "1883:1883"
-    #         - "9001:9001"
-    #     volumes:
-    #         - ./mosquitto.conf:/mosquitto/config/mosquitto.conf
-    #         - mosquitto_data:/mosquitto/data
-    #         - mosquitto_log:/mosquitto/log
-    #     networks:
-    #         - bl_mqtt
-    #         - proxy_mqtt
+    mosquitto:
+        image: eclipse-mosquitto:latest
+        deploy:
+            mode: replicated
+            replicas: 1
+            update_config:
+                parallelism: 1
+                order: stop-first
+            rollback_config:
+                parallelism: 1
+                order: stop-first
+        ports:
+            - "1883:1883"
+            - "9001:9001"
+        volumes:
+            - ./mosquitto.conf:/mosquitto/config/mosquitto.conf
+            - mosquitto_data:/mosquitto/data
+            - mosquitto_log:/mosquitto/log
+        networks:
+            - bl_mqtt
+            - proxy_mqtt
 
 volumes:
     db-volume:
