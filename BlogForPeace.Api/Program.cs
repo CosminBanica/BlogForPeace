@@ -58,6 +58,7 @@ var app = builder.Build();
 //    app.UseHttpsRedirection();
 //}
 
+
 app.UseAuthenticationAndAuthorization();
 
 app.UseHttpLogging();
