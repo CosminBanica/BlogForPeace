@@ -15,8 +15,7 @@ namespace BlogForPeace.Infrastructure.Data.EntityConfigurations
                 .IsRequired();
 
             builder
-                .Property(x => x.Description)
-                .IsRequired();
+                .Property(x => x.Description);
 
             base.Configure(builder);
         }

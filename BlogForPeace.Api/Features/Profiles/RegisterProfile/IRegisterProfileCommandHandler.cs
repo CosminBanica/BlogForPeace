@@ -2,6 +2,6 @@
 {
     public interface IRegisterProfileCommandHandler
     {
-        public Task HandleAsync(RegisterProfileCommand command, string identityId, CancellationToken cancellationToken);
+        public Task HandleAsync(string identityId, CancellationToken cancellationToken);
     }
 }

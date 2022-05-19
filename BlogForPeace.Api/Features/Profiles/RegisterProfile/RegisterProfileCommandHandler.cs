@@ -11,9 +11,9 @@ namespace BlogForPeace.Api.Features.Profiles.RegisterProfile
             usersCommentsRepository = _userCommentsRepository;
         }
 
-        public Task HandleAsync(RegisterProfileCommand command, string identityId, CancellationToken cancellationToken)
+        public Task HandleAsync(string identityId, CancellationToken cancellationToken)
             => usersCommentsRepository.AddAsync(
-                new RegisterUserProfileCommand(identityId, command.Email, command.Name, command.Address),
+                new RegisterUserProfileCommand(identityId, "", "", ""),
                 cancellationToken);
     }
 }
