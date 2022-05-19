@@ -3,10 +3,6 @@ version: "3.8"
 services:
     db_mssql:
         image: mcr.microsoft.com/mssql/server:2019-latest
-        environment:
-            ACCEPT_EULA: "Y"
-            SA_PASSWORD: Parola1!strong
-            MSSQL_PID: Express
         deploy:
             replicas: 1
             placement:
@@ -18,6 +14,10 @@ services:
             rollback_config:
                 parallelism: 1
                 order: start-first
+        environment:
+            ACCEPT_EULA: "Y"
+            SA_PASSWORD: Parola1!strong
+            MSSQL_PID: Express
         volumes:
             - db-volume:/var/opt/mssql
         ports:
@@ -55,20 +55,58 @@ services:
             rollback_config:
                 parallelism: 1
                 order: stop-first
-        ports:
-            - "1883:1883"
-            - "9001:9001"
         volumes:
             - mosquitto_data:/mosquitto/data
             - mosquitto_log:/mosquitto/log
+        ports:
+            - "1883:1883"
+            - "9001:9001"
         networks:
             - bl_mqtt
             - proxy_mqtt
+
+    # mariadb_nginx-proxy-manager:
+    #     image: jc21/mariadb-aria:latest
+    #     environment:
+    #         - PUID=911
+    #         - PGID=911
+    #         - MYSQL_ROOT_PASSWORD=adminadmin
+    #         - MYSQL_DATABASE=nginx-proxy-manager
+    #         - MYSQL_USER=nginx-proxy-manager
+    #         - MYSQL_PASSWORD=proxyadmin
+    #     volumes:
+    #         - mariadb_nginx-proxy-manager_db:/var/lib/mysql
+
+    # nginx-proxy-manager:
+    #     image: jc21/nginx-proxy-manager:latest
+    #     environment:
+    #         # These are the settings to access your db
+    #         DB_MYSQL_HOST: "mariadb_nginx-proxy-manager"
+    #         DB_MYSQL_PORT: 3306
+    #         DB_MYSQL_NAME: "nginx-proxy-manager"
+    #         DB_MYSQL_USER: "nginx-proxy-manager"
+    #         DB_MYSQL_PASSWORD: "proxyadmin"
+    #     volumes:
+    #         - nginx-proxy-manager_data:/data
+    #         - nginx-proxy-manager_letsencrypt:/etc/letsencrypt
+    #     ports:
+    #         # Public HTTP Port:
+    #         - '80:80'
+    #         # Public HTTPS Port:
+    #         - '443:443'
+    #         # Admin Web Port:
+    #         - '81:81'
+
 
 volumes:
     db-volume:
     mosquitto_data:
     mosquitto_log:
+
+    mariadb_nginx-proxy-manager_db:
+
+    nginx-proxy-manager_data:
+    nginx-proxy-manager_letsencrypt:
 
 networks:
     proxy_bl:
