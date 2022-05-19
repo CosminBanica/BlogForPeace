@@ -20,7 +20,7 @@ namespace BlogForPeace.Api.Features.Blogposts.AddBlogpost
         {
             foreach (var tag in command.Tags)
             {
-                await MqttPublishAsync("blog/tag", command.Text, true);
+                await MqttPublishAsync("blog/" + tag.Name, command.Text, true);
             }
 
             await blogpostRepository.AddAsync(
@@ -57,12 +57,18 @@ namespace BlogForPeace.Api.Features.Blogposts.AddBlogpost
             await mqttClient.StartAsync(managedOptions);
         }
 
-        public async Task MqttPublishAsync(string topic, string payload, bool retainFlag = true, int qos = 1) =>
-          await mqttClient.PublishAsync(new MqttApplicationMessageBuilder()
-            .WithTopic(topic)
-            .WithPayload(payload)
-            .WithQualityOfServiceLevel((MQTTnet.Protocol.MqttQualityOfServiceLevel)qos)
-            .WithRetainFlag(retainFlag)
-            .Build());
+        public async Task MqttPublishAsync(string topic, string payload, bool retainFlag = true, int qos = 1)
+        {
+            if (!mqttClient.IsStarted)
+            {
+                await MqttConnectAsync();
+            }
+            await mqttClient.PublishAsync(new MqttApplicationMessageBuilder()
+                .WithTopic(topic)
+                .WithPayload(payload)
+                .WithQualityOfServiceLevel((MQTTnet.Protocol.MqttQualityOfServiceLevel)qos)
+                .WithRetainFlag(retainFlag)
+                .Build());
+        }
     }
 }
