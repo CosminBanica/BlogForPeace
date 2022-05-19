@@ -47,16 +47,17 @@ builder.Services.AddApiFeaturesHandlers();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
+//if (app.Environment.IsDevelopment())
+//{
     app.UseSwagger();
     app.UseSwaggerUI();
     app.UseCors("DevelopmentCorsPolicy");
-}
-else
-{
-    app.UseHttpsRedirection();
-}
+//}
+//else
+//{
+//    app.UseHttpsRedirection();
+//}
+
 
 app.UseAuthenticationAndAuthorization();
 
