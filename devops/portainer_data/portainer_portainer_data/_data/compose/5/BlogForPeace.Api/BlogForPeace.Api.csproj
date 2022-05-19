@@ -1,0 +1,48 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
+
+	<!--<ItemGroup>
+		<Compile Remove="Features\Books\DeleteBook\**" />
+		<Compile Remove="Features\Profile\UpdateProfile\**" />
+		<Compile Remove="Features\Profile\ViewProfile\**" />
+		<Compile Remove="Features\Rentals\ViewMyRentals\**" />
+		<Compile Remove="Features\Rentals\ViewRentalMetrics\**" />
+		<Content Remove="Features\Books\DeleteBook\**" />
+		<Content Remove="Features\Profile\UpdateProfile\**" />
+		<Content Remove="Features\Profile\ViewProfile\**" />
+		<Content Remove="Features\Rentals\ViewMyRentals\**" />
+		<Content Remove="Features\Rentals\ViewRentalMetrics\**" />
+		<EmbeddedResource Remove="Features\Books\DeleteBook\**" />
+		<EmbeddedResource Remove="Features\Profile\UpdateProfile\**" />
+		<EmbeddedResource Remove="Features\Profile\ViewProfile\**" />
+		<EmbeddedResource Remove="Features\Rentals\ViewMyRentals\**" />
+		<EmbeddedResource Remove="Features\Rentals\ViewRentalMetrics\**" />
+		<None Remove="Features\Books\DeleteBook\**" />
+		<None Remove="Features\Profile\UpdateProfile\**" />
+		<None Remove="Features\Profile\ViewProfile\**" />
+		<None Remove="Features\Rentals\ViewMyRentals\**" />
+		<None Remove="Features\Rentals\ViewRentalMetrics\**" />
+	</ItemGroup>-->
+
+	<ItemGroup>
+		<PackageReference Include="MediatR" Version="10.0.1" />
+		<PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.2" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.2">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\BlogForPeace.Core\BlogForPeace.Core.csproj" />
+		<ProjectReference Include="..\BlogForPeace.Infrastructure\BlogForPeace.Infrastructure.csproj" />
+	</ItemGroup>
+
+</Project>
