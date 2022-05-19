@@ -56,7 +56,7 @@ namespace BlogForPeace.Api.Features.Blogposts.AddBlogpost
 
             await mqttClient.StartAsync(managedOptions);
         }
-
+        
         public async Task MqttPublishAsync(string topic, string payload, bool retainFlag = true, int qos = 1)
         {
             if (!mqttClient.IsStarted)
