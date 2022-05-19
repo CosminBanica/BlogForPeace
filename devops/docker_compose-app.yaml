@@ -39,7 +39,7 @@ services:
                 parallelism: 1
                 order: start-first
         ports:
-            - "80:80"
+            # - "80:80"
             - "7152:7152"
         networks:
             - bl_db
