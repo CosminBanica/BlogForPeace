@@ -83,7 +83,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "User", "User", "{894FDF05-E
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Admin", "Admin", "{EB80EC0C-76DB-4936-A656-C447D47E9143}"
 	ProjectSection(SolutionItems) = preProject
-		frontend\src\pages\Admin\Blogpost.jsx = frontend\src\pages\Admin\Blogpost.jsx
 		frontend\src\pages\Admin\Blogposts.jsx = frontend\src\pages\Admin\Blogposts.jsx
 	EndProjectSection
 EndProject

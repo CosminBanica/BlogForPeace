@@ -13,11 +13,14 @@ const BlogpostCard = ({
   return (
     <div className={`blogpost-card}`}>
       <div className="blogpost-group">
-        <div className="card-heading">
-          <p>{author}</p> <BsDot /> <p>{genre}</p>
-        </div>
         <div className="title">
           <h3>{title}</h3>
+        </div>
+        <div className="text">
+          <h3>{text}</h3>
+        </div>
+        <div className="location">
+          <h3>{location}</h3>
         </div>
       </div>
       <div className="tags">
