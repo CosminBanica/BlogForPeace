@@ -1,0 +1,5 @@
+FROM eclipse-mosquitto:latest
+
+COPY ./devops/message_broker/mosquitto.conf /mosquitto/config/mosquitto.conf
+
+ENTRYPOINT ["/usr/sbin/mosquitto", "-c", "/mosquitto/config/mosquitto.conf"]
