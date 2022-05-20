@@ -20,8 +20,6 @@ services:
             MSSQL_PID: Express
         volumes:
             - db-volume:/var/opt/mssql
-        ports:
-            - 1433:1433
         networks:
             - bl_db
 
@@ -44,6 +42,7 @@ services:
         networks:
             - bl_db
             - bl_mqtt
+            - proxy_bl
 
     mosquitto:
         image: elrego1/blog_for_peace_mqtt:latest
@@ -66,37 +65,71 @@ services:
             - bl_mqtt
             - proxy_mqtt
 
-    # mariadb_nginx-proxy-manager:
-    #     image: jc21/mariadb-aria:latest
-    #     environment:
-    #         - PUID=911
-    #         - PGID=911
-    #         - MYSQL_ROOT_PASSWORD=adminadmin
-    #         - MYSQL_DATABASE=nginx-proxy-manager
-    #         - MYSQL_USER=nginx-proxy-manager
-    #         - MYSQL_PASSWORD=proxyadmin
-    #     volumes:
-    #         - mariadb_nginx-proxy-manager_db:/var/lib/mysql
+    mariadb_nginx-proxy-manager:
+        image: jc21/mariadb-aria:latest
+        deploy:
+            mode: replicated
+            replicas: 1
+            placement:
+                constraints:
+                    - "node.role==manager"
+            update_config:
+                parallelism: 1
+                order: start-first
+            rollback_config:
+                parallelism: 1
+                order: start-first
+        environment:
+            - PUID=911
+            - PGID=911
+            - MYSQL_ROOT_PASSWORD=adminadmin
+            - MYSQL_DATABASE=nginx-proxy-manager
+            - MYSQL_USER=nginx-proxy-manager
+            - MYSQL_PASSWORD=proxyadmin
+        volumes:
+            - mariadb_nginx-proxy-manager_db:/var/lib/mysql
+        networks:
+            - proxy_proxy-db
 
-    # nginx-proxy-manager:
-    #     image: jc21/nginx-proxy-manager:latest
-    #     environment:
-    #         # These are the settings to access your db
-    #         DB_MYSQL_HOST: "mariadb_nginx-proxy-manager"
-    #         DB_MYSQL_PORT: 3306
-    #         DB_MYSQL_NAME: "nginx-proxy-manager"
-    #         DB_MYSQL_USER: "nginx-proxy-manager"
-    #         DB_MYSQL_PASSWORD: "proxyadmin"
-    #     volumes:
-    #         - nginx-proxy-manager_data:/data
-    #         - nginx-proxy-manager_letsencrypt:/etc/letsencrypt
-    #     ports:
-    #         # Public HTTP Port:
-    #         - '80:80'
-    #         # Public HTTPS Port:
-    #         - '443:443'
-    #         # Admin Web Port:
-    #         - '81:81'
+    nginx-proxy-manager:
+        image: jc21/nginx-proxy-manager:latest
+        deploy:
+            mode: replicated
+            replicas: 2
+            placement:
+                max_replicas_per_node: 1
+            update_config:
+                parallelism: 1
+                order: start-first
+            rollback_config:
+                parallelism: 1
+                order: start-first
+        environment:
+            # These are the settings to access your db
+            DB_MYSQL_HOST: "mariadb_nginx-proxy-manager"
+            DB_MYSQL_PORT: 3306
+            DB_MYSQL_NAME: "nginx-proxy-manager"
+            DB_MYSQL_USER: "nginx-proxy-manager"
+            DB_MYSQL_PASSWORD: "proxyadmin"
+        volumes:
+            - nginx-proxy-manager_data:/data
+            - nginx-proxy-manager_letsencrypt:/etc/letsencrypt
+        ports:
+            # Proxy's Admin Web Port:
+            - "81:81"
+            # Public HTTP Port for backend:
+            - "80:80"
+            # Public HTTPS Port:
+            # - "443:443"
+            # backend testing port
+            - "7152:7152"
+            # MQTT port
+            - "1883:1883"
+
+        networks:
+            - proxy_proxy-db
+            - proxy_bl
+            - proxy_mqtt
 
 
 volumes:
@@ -110,10 +143,10 @@ volumes:
     nginx-proxy-manager_letsencrypt:
 
 networks:
+    proxy_proxy-db:
+
     proxy_bl:
     proxy_mqtt:
+
     bl_mqtt:
     bl_db:
-    agent_network:
-        driver: overlay
-        attachable: true
