@@ -74,9 +74,9 @@ const Account = () => {
             {/*        <div className="collapse navbar-collapse"*/}
             {/*            id="navcol-1">*/}
             {/*            <ul className="nav navbar-nav ml-auto">*/}
-            {/*                <li className="nav-item" role="presentation"><a className="nav-link" href="http://localhost:3000/AddBlogpost">Add Post</a></li>*/}
-            {/*                <li className="nav-item" role="presentation"><a className="nav-link" href="http://localhost:3000/">Blog</a></li>*/}
-            {/*                <li className="nav-item" role="presentation"><a className="nav-link active" href="http://localhost:3000/Account">Edit Profile</a></li>*/}
+            {/*                <li className="nav-item" role="presentation"><a className="nav-link" href="http://127.0.0.1:3000/AddBlogpost">Add Post</a></li>*/}
+            {/*                <li className="nav-item" role="presentation"><a className="nav-link" href="http://127.0.0.1:3000/">Blog</a></li>*/}
+            {/*                <li className="nav-item" role="presentation"><a className="nav-link active" href="http://127.0.0.1:3000/Account">Edit Profile</a></li>*/}
             {/*            </ul>*/}
             {/*        </div>*/}
             {/*    </div>*/}
