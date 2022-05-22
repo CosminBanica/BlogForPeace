@@ -16,13 +16,13 @@ namespace BlogForPeace.Api.Features.Profiles.EditProfile
             this.mediator = _mediator;
         }
 
-        public async Task HandleAsync(EditProfileCommand command, CancellationToken cancellationToken)
+        public async Task HandleAsync(EditProfileCommand command, string identityId, CancellationToken cancellationToken)
         {
-            var user = await userCommentsRepository.GetAsync(command.Id, cancellationToken) as UsersCommentsDomain;
+            var user = await userCommentsRepository.GetByIdentityAsync(identityId, cancellationToken) as UsersCommentsDomain;
 
             if (user == null)
             {
-                throw new ApiException(HttpStatusCode.Unauthorized, $"User with identity {command.Id} does not have a registered profile");
+                throw new ApiException(HttpStatusCode.Unauthorized, $"User with identity {identityId} does not have a registered profile");
             }
 
             user.RemoveTags();
