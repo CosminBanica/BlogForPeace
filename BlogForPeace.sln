@@ -223,6 +223,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Document cu arhitectura de domeniu.pptx = Document cu arhitectura de domeniu.pptx
 		Document cu arhitectura macro.pptx = Document cu arhitectura macro.pptx
 		User stories.pptx = User stories.pptx
+		Wireframes_Prototypes.txt = Wireframes_Prototypes.txt
 	EndProjectSection
 EndProject
 Global
