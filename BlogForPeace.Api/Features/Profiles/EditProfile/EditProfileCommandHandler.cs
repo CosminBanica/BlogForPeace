@@ -31,9 +31,11 @@ namespace BlogForPeace.Api.Features.Profiles.EditProfile
             }
 
             user.RemoveTags();
+            await MqttUnsubscribeAllAsync(command.Email);
             foreach (var tag in command.Tags)
             {
                 var userAddedTagEvent = user.AddTag(tag.Name, tag.Description);
+                await MqttSubscribeAsync("blog/" + tag.Name, command.Email);
             }
 
             user.UpdateProfile(command.Email, command.Name, command.Address);
@@ -41,7 +43,7 @@ namespace BlogForPeace.Api.Features.Profiles.EditProfile
             await userCommentsRepository.SaveAsync(cancellationToken);
         }
 
-        public async Task MqttConnectAsync()
+        private async Task MqttConnectAsync()
         {
             string clientId = Guid.NewGuid().ToString();
             string mqttURI = "mosquitto";
@@ -68,6 +70,43 @@ namespace BlogForPeace.Api.Features.Profiles.EditProfile
             mqttClient = new MqttFactory().CreateManagedMqttClient();
 
             await mqttClient.StartAsync(managedOptions);
+        }
+
+        private async Task MqttSubscribeAsync(string topic, string email, int qos = 1)
+        {
+            if (!mqttClient.IsStarted)
+            {
+                await MqttConnectAsync();
+            }
+            await MqttPublishAsync(topic, email);
+        }
+
+        private async Task MqttUnsubscribeAllAsync(string email)
+        {
+            if (!mqttClient.IsStarted)
+            {
+                await MqttConnectAsync();
+            }
+            await mqttClient.PublishAsync(new MqttApplicationMessageBuilder()
+                .WithTopic("unsubscribers")
+                .WithPayload("email:" + email)
+                .WithQualityOfServiceLevel((MQTTnet.Protocol.MqttQualityOfServiceLevel)1)
+                .WithRetainFlag(true)
+                .Build());
+        }
+
+        private async Task MqttPublishAsync(string topic, string email, bool retainFlag = true, int qos = 1)
+        {
+            if (!mqttClient.IsStarted)
+            {
+                await MqttConnectAsync();
+            }
+            await mqttClient.PublishAsync(new MqttApplicationMessageBuilder()
+                .WithTopic("subscribers")
+                .WithPayload("email:" + email + ", topic:" + topic)
+                .WithQualityOfServiceLevel((MQTTnet.Protocol.MqttQualityOfServiceLevel)qos)
+                .WithRetainFlag(retainFlag)
+                .Build());
         }
     }
 }

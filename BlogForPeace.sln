@@ -213,6 +213,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "js", "js", "{B60C17F9-33B1-
 		frontend\public\assets\bootstrap\js\bootstrap.min.js = frontend\public\assets\bootstrap\js\bootstrap.min.js
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "email_handler", "email_handler", "{F0E365E2-76D3-49F9-8848-A404BC7CB17D}"
+	ProjectSection(SolutionItems) = preProject
+		email_handler\mqtt_email.py = email_handler\mqtt_email.py
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
