@@ -1,4 +1,4 @@
-const base = "http://blogforpeace:7152/api/v1/";
+const base = "http://blogforpeace:80/api/v1/";
 const routes = {
     blogposts: {
         addBlogpost: "Blogposts/addBlogpost",
