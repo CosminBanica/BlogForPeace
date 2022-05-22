@@ -27,7 +27,7 @@ services:
         image: elrego1/blog_for_peace:latest
         deploy:
             mode: replicated
-            replicas: 2
+            replicas: 1
             placement:
                 max_replicas_per_node: 1
             update_config:
@@ -37,19 +37,29 @@ services:
                 parallelism: 1
                 order: start-first
         ports:
-            - "80:80"
+            - "81:80"
             - "7152:7152"
+        depends_on:
+            - db_mssql
+            - mosquitto
+        logging:
+            driver: loki
+            options:
+                loki-url: http://host.docker.internal:3100/loki/api/v1/push
+                loki-external-labels: job=backend,environment=production
         networks:
             - bl_db
             - bl_mqtt
             - proxy_bl
             - frontend_bl
+            - monitoring
+            - logging
 
     frontend:
         image: elrego1/blog_frontend:latest
         deploy:
             mode: replicated
-            replicas: 2
+            replicas: 1
             placement:
                 max_replicas_per_node: 1
             update_config:
@@ -58,11 +68,17 @@ services:
             rollback_config:
                 parallelism: 1
                 order: start-first
-        ports:
-            - "3000:3000"
+        # ports:
+        #     - "3000:3000"
+        logging:
+            driver: loki
+            options:
+                loki-url: http://host.docker.internal:3100/loki/api/v1/push
+                loki-external-labels: job=frontend,environment=production
         networks:
             - proxy_frontend
             - frontend_bl
+            - logging
 
 
     mosquitto:
@@ -85,15 +101,76 @@ services:
         networks:
             - bl_mqtt
 
+    kong:
+        image: kong:latest
+        volumes:
+            - ./configs/kong:/usr/local/kong/declarative
+        environment:
+            KONG_DATABASE: 'off'
+            KONG_DECLARATIVE_CONFIG: /usr/local/kong/declarative/kong.yaml
+            KONG_PROXY_ACCESS_LOG: /dev/stdout
+            KONG_ADMIN_ACCESS_LOG: /dev/stdout
+            KONG_PROXY_ERROR_LOG: /dev/stderr
+            KONG_ADMIN_ERROR_LOG: /dev/stderr
+            KONG_ADMIN_LISTEN: 0.0.0.0:8001, 0.0.0.0:8444 ssl
+        ports:
+            - 80:8000
+            - 443:8443
+            - 8001:8001
+            - 8444:8444
+        deploy:
+            placement:
+                constraints: [node.role == manager]
+        networks:
+            - proxy_bl
+            - proxy_frontend
+
+    prometheus:
+        image: prom/prometheus
+        volumes:
+            - ./configs/prometheus/prometheus.yaml:/etc/prometheus/prometheus.yaml
+        ports:
+            - 9090:9090
+        networks:
+            - monitoring
+            - visualizing
+        extra_hosts:
+            - host.docker.internal:host-gateway
+
+    loki:
+        image: grafana/loki
+        volumes:
+            - ./configs/loki/loki.yaml:/etc/config/loki.yaml
+            - ./configs/loki/wal:/wal
+        entrypoint:
+            - /usr/bin/loki
+            - -config.file=/etc/config/loki.yaml
+        ports:
+            - 3100:3100
+        networks:
+            - logging
+            - visualizing
+
+    grafana:
+        image: grafana/grafana
+        volumes:
+            - grafana-volume:/var/lib/grafana
+        ports:
+            - 3000:3000
+        depends_on:
+            - testapp
+        deploy:
+            placement:
+                constraints: [node.role == manager]
+        networks:
+            - visualizing
+
 volumes:
     db-volume:
     mosquitto_data:
     mosquitto_log:
 
-    mariadb_nginx-proxy-manager_db:
-
-    nginx-proxy-manager_data:
-    nginx-proxy-manager_letsencrypt:
+    grafana-volume:
 
 networks:
     proxy_proxy-db:
@@ -104,3 +181,7 @@ networks:
 
     bl_mqtt:
     bl_db:
+
+    visualizing:
+    logging:
+    monitoring:
