@@ -218,6 +218,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "email_handler", "email_hand
 		email_handler\mqtt_email.py = email_handler\mqtt_email.py
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1AC6C6CA-6526-4053-902E-C2D4168018E9}"
+	ProjectSection(SolutionItems) = preProject
+		Document cu arhitectura de domeniu.pptx = Document cu arhitectura de domeniu.pptx
+		Document cu arhitectura macro.pptx = Document cu arhitectura macro.pptx
+		User stories.pptx = User stories.pptx
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
