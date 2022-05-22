@@ -46,7 +46,7 @@ services:
             - frontend_bl
 
     frontend:
-        image: elrego1/blog_frontend
+        image: elrego1/blog_frontend:latest
         deploy:
             mode: replicated
             replicas: 1
