@@ -49,7 +49,7 @@ const Blogposts = () => {
             <div className="blogposts">
                 {blogposts.map((blogpost, index) => (
                     <BlogpostCard key={index} {...blogpost} handleClick={handleClick} />
-                ))}
+                )).reverse()}
             </div>
         </div>
     );

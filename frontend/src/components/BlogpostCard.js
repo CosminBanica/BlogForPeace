@@ -25,7 +25,7 @@ const BlogpostCard = ({
       </div>
       <div className="tags">
         {tags.length > 0 &&
-          tags.map((tag) => tags.name).join(", ")}
+          tags.map((tag) => tag.name).join(", ")}
       </div>
         <Button onClick={() => handleClick({ id })}>
             View
