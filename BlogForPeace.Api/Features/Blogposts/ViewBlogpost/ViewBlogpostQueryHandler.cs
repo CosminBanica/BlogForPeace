@@ -16,6 +16,7 @@ namespace BlogForPeace.Api.Features.Blogposts.ViewBlogpost
         public async Task<BlogpostsWithCommentsDto> HandleAsync(int blogpostId, CancellationToken cancellationToken)
         {
             var blogpost = await dbContext.Blogposts
+                .Include(x => x.Tags)
                 .AsNoTracking()
                 .SingleOrDefaultAsync(x => x.Id == blogpostId, cancellationToken);
 

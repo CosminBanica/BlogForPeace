@@ -5,15 +5,17 @@ import Button from "../Button";
 import Input from "../Input";
 import Tags from "../Tags";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
 const BlogpostModal = ({ modalIsOpen, closeModal, submitForm }) => {
   const { register, handleSubmit, getValues } = useForm();
-  const [tags, setTags] = useState([]);
+    const [tags, setTags] = useState([]);
+    const navigate = useNavigate();
 
   const handleClick = async () => {
     const data = getValues();
     submitForm({ ...data, tags });
-    closeModal();
+    navigate("/");
   };
 
   return (
@@ -39,12 +41,12 @@ const BlogpostModal = ({ modalIsOpen, closeModal, submitForm }) => {
           placeholder="Relevant location"
           {...register("location")}
         />
-        <Tags
-          tags={tags}
-          setTags={setTags}
-          label="Tags"
-          placeholder="Press enter to save tag"
-        />
+        {/*<Tags*/}
+        {/*  tags={tags}*/}
+        {/*  setTags={setTags}*/}
+        {/*  label="Tags"*/}
+        {/*  placeholder="Press enter to save tag"*/}
+        {/*/>*/}
         <Button type="button" onClick={handleSubmit(handleClick)}>
           Add blogpost
         </Button>

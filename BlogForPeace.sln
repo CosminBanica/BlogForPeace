@@ -71,16 +71,12 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "pages", "pages", "{D591810F-BB54-401F-803B-ACE126E7E3A2}"
 	ProjectSection(SolutionItems) = preProject
 		frontend\src\pages\Account.js = frontend\src\pages\Account.js
+		frontend\src\pages\AddBlogpost.js = frontend\src\pages\AddBlogpost.js
 		frontend\src\pages\Blogpost.js = frontend\src\pages\Blogpost.js
 		frontend\src\pages\Blogposts.js = frontend\src\pages\Blogposts.js
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "User", "User", "{894FDF05-E325-4002-AF88-C2CED004B1FE}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Admin", "Admin", "{EB80EC0C-76DB-4936-A656-C447D47E9143}"
-	ProjectSection(SolutionItems) = preProject
-		frontend\src\pages\Admin\Blogposts.js = frontend\src\pages\Admin\Blogposts.js
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "modals", "modals", "{DBE35767-E411-4F32-B509-AFA6976A80F2}"
 	ProjectSection(SolutionItems) = preProject
@@ -217,6 +213,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "js", "js", "{B60C17F9-33B1-
 		frontend\public\assets\bootstrap\js\bootstrap.min.js = frontend\public\assets\bootstrap\js\bootstrap.min.js
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "email_handler", "email_handler", "{F0E365E2-76D3-49F9-8848-A404BC7CB17D}"
+	ProjectSection(SolutionItems) = preProject
+		email_handler\mqtt_email.py = email_handler\mqtt_email.py
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -248,7 +249,6 @@ Global
 		{E4F207AB-4614-4A73-9A3D-05707106F21A} = {5D994487-E935-4B42-BCB3-C359C93EA052}
 		{D591810F-BB54-401F-803B-ACE126E7E3A2} = {5D994487-E935-4B42-BCB3-C359C93EA052}
 		{894FDF05-E325-4002-AF88-C2CED004B1FE} = {D591810F-BB54-401F-803B-ACE126E7E3A2}
-		{EB80EC0C-76DB-4936-A656-C447D47E9143} = {D591810F-BB54-401F-803B-ACE126E7E3A2}
 		{DBE35767-E411-4F32-B509-AFA6976A80F2} = {1FC38030-8916-48C9-BE30-DE55914CCC2E}
 		{3B7E717B-F1AE-4EDB-8066-05EB038C10D4} = {5D994487-E935-4B42-BCB3-C359C93EA052}
 		{E455D82C-A292-41BC-8487-238E63765EA3} = {79E52E80-92B1-4694-9D89-7894E4B1CE3C}

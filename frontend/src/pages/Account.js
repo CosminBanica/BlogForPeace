@@ -69,18 +69,18 @@ const Account = () => {
 
     return (
         <div>
-            <nav className="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
-                <div className="container"><a className="navbar-brand logo" href="#">BlogForPace</a><button data-toggle="collapse" className="navbar-toggler" data-target="#navcol-1"><span className="sr-only">Toggle navigation</span><span className="navbar-toggler-icon"></span></button>
-                    <div className="collapse navbar-collapse"
-                        id="navcol-1">
-                        <ul className="nav navbar-nav ml-auto">
-                            <li className="nav-item" role="presentation"><a className="nav-link" href="http://localhost:3000/AddBlogpost">Add Post</a></li>
-                            <li className="nav-item" role="presentation"><a className="nav-link active" href="http://localhost:3000/">Blog</a></li>
-                            <li className="nav-item" role="presentation"><a className="nav-link" href="http://localhost:3000/Account">Edit Profile</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
+            {/*<nav className="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">*/}
+            {/*    <div className="container"><a className="navbar-brand logo" href="#">BlogForPeace</a><button data-toggle="collapse" className="navbar-toggler" data-target="#navcol-1"><span className="sr-only">Toggle navigation</span><span className="navbar-toggler-icon"></span></button>*/}
+            {/*        <div className="collapse navbar-collapse"*/}
+            {/*            id="navcol-1">*/}
+            {/*            <ul className="nav navbar-nav ml-auto">*/}
+            {/*                <li className="nav-item" role="presentation"><a className="nav-link" href="http://127.0.0.1:3000/AddBlogpost">Add Post</a></li>*/}
+            {/*                <li className="nav-item" role="presentation"><a className="nav-link" href="http://127.0.0.1:3000/">Blog</a></li>*/}
+            {/*                <li className="nav-item" role="presentation"><a className="nav-link active" href="http://127.0.0.1:3000/Account">Edit Profile</a></li>*/}
+            {/*            </ul>*/}
+            {/*        </div>*/}
+            {/*    </div>*/}
+            {/*</nav>*/}
 
             <AccountModal
                 modalIsOpen={openedModal}

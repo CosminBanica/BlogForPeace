@@ -20,7 +20,8 @@ const AccountModal = ({ modalIsOpen, closeModal, submitForm }) => {
     return (
         <Modal
         ariaHideApp={false}
-        isOpen={modalIsOpen}
+            isOpen={modalIsOpen}
+            style={{display: 'block !important'}}
         onRequestClose={closeModal}
         contentLabel="Edit account"
         className="modal"
