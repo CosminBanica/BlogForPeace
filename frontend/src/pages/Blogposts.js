@@ -45,7 +45,7 @@ const Blogposts = () => {
                     </div>
                 </div>
             </nav>
-
+            <br/><br/><br/><br/><br/>
             <div className="blogposts">
                 {blogposts.map((blogpost, index) => (
                     <BlogpostCard key={index} {...blogpost} handleClick={handleClick} />

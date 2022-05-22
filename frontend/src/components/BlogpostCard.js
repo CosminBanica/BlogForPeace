@@ -1,6 +1,6 @@
 import React from "react";
 import { BsDot } from "react-icons/bs";
-import Button from "./Button";
+import {Button} from 'antd';
 
 const BlogpostCard = ({
   id,
@@ -17,19 +17,21 @@ const BlogpostCard = ({
           <h3>{title}</h3>
         </div>
         <div className="text">
-          <h3>{text}</h3>
+          <div>{text}</div>
         </div>
         <div className="location">
-          <h3>{location}</h3>
+          <div>Location: {location}</div>
         </div>
       </div>
-      <div className="tags">
+      <div className="tags"> 
+        tags: 
         {tags.length > 0 &&
           tags.map((tag) => tag.name).join(", ")}
       </div>
-        <Button onClick={() => handleClick({ id })}>
+        <Button type="text" onClick={() => handleClick({ id })}>
             View
         </Button>
+        <br/><br/><br/>
     </div>
   );
 };

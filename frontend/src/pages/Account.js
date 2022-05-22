@@ -9,6 +9,10 @@ import AccountModal from "../components/modals/AccountModal";
 import { MdEdit } from "react-icons/md";
 import Section from "../components/Section";
 import Table from "../components/Table";
+import { Descriptions, Badge } from 'antd';
+import { List, Typography, Divider } from 'antd';
+
+
 
 const Account = () => {
     const { getAccessTokenSilently } = useAuth0();
@@ -69,18 +73,18 @@ const Account = () => {
 
     return (
         <div>
-            {/*<nav className="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">*/}
-            {/*    <div className="container"><a className="navbar-brand logo" href="#">BlogForPeace</a><button data-toggle="collapse" className="navbar-toggler" data-target="#navcol-1"><span className="sr-only">Toggle navigation</span><span className="navbar-toggler-icon"></span></button>*/}
-            {/*        <div className="collapse navbar-collapse"*/}
-            {/*            id="navcol-1">*/}
-            {/*            <ul className="nav navbar-nav ml-auto">*/}
-            {/*                <li className="nav-item" role="presentation"><a className="nav-link" href="http://localhost:3000/AddBlogpost">Add Post</a></li>*/}
-            {/*                <li className="nav-item" role="presentation"><a className="nav-link" href="http://localhost:3000/">Blog</a></li>*/}
-            {/*                <li className="nav-item" role="presentation"><a className="nav-link active" href="http://localhost:3000/Account">Edit Profile</a></li>*/}
-            {/*            </ul>*/}
-            {/*        </div>*/}
-            {/*    </div>*/}
-            {/*</nav>*/}
+            <nav className="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
+                <div className="container"><a className="navbar-brand logo" href="#">BlogForPeace</a><button data-toggle="collapse" className="navbar-toggler" data-target="#navcol-1"><span className="sr-only">Toggle navigation</span><span className="navbar-toggler-icon"></span></button>
+                    <div className="collapse navbar-collapse"
+                        id="navcol-1">
+                        <ul className="nav navbar-nav ml-auto">
+                            <li className="nav-item" role="presentation"><a className="nav-link" href="http://localhost:3000/AddBlogpost">Add Post</a></li>
+                            <li className="nav-item" role="presentation"><a className="nav-link" href="http://localhost:3000/">Blog</a></li>
+                            <li className="nav-item" role="presentation"><a className="nav-link active" href="http://localhost:3000/Account">Edit Profile</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
 
             <AccountModal
                 modalIsOpen={openedModal}
@@ -89,19 +93,30 @@ const Account = () => {
                 }}
                 submitForm={handleEditProfile}
             />
+
+            <br/><br/><br/><br/>
+
+            <Descriptions title="User Info" column={1} layout="vertical" bordered>
+                <Descriptions.Item label="Nume:" >{profile.name}</Descriptions.Item>
+                <Descriptions.Item label="Email:">{profile.email}</Descriptions.Item>
+                <Descriptions.Item label="Address:">{profile.address}</Descriptions.Item>
+            </Descriptions>
+
+            <Divider orientation="left"></Divider>
+            <List
+            size="large"
+            header={<div>Lista de taguri:</div>}
+            dataSource = {(profile.subscribedTags ?? []).map (x => x.name)}
+            bordered
+            renderItem={item => <List.Item>{item}</List.Item>}
+            />
+
             <div className="row-between">
-                <h2>{ profile.name }</h2>
                 <Button onClick={() => setOpenedModal(true)}>
                     <MdEdit /> Edit
                 </Button>
             </div>
-            <div className="flex flex-col gap-10">
-                <Section title={"Profile Details"} fields={profileFields} />
-                <div className="flex flex-col gap-5 w-full p-[1px]">
-                    <p className="section-title">Subscribed tags</p>
-                    <Table data={profile.subscribedTags ?? []} columns={columns} noHref />
-                </div>
-            </div>
+
         </div>
     );
 };

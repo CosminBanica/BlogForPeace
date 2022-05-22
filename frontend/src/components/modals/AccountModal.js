@@ -27,6 +27,9 @@ const AccountModal = ({ modalIsOpen, closeModal, submitForm }) => {
         className="modal"
         >
         <div className="row-between">
+        <br/><br/><br/>
+        <br/><br/><br/>
+
         <h2>Edit account</h2>
         <Button onClick={closeModal} className="icon-button">
             <MdOutlineClose />
@@ -34,9 +37,12 @@ const AccountModal = ({ modalIsOpen, closeModal, submitForm }) => {
         </div>
         <div className="line" />
         <form>
-        <Input label="Name" placeholder="Your full name" {...register("name")} />
-        <Input label="Email" placeholder="Your email address" {...register("email")} />
-        <Input label="Address" placeholder="Your address" {...register("address")} />
+        <Input label="Name:" placeholder="Your full name:" {...register("name")} />
+        <br></br>
+        <Input label="Email:" placeholder="Your email address:" {...register("email")} />
+        <br></br>
+        <Input label="Address:" placeholder="Your address" {...register("address")} />
+        <br></br>
         <Tags
             tags={tags}
             setTags={setTags}

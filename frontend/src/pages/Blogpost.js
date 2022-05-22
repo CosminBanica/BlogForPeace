@@ -15,17 +15,17 @@ const Blogpost = () => {
 
     const blogpostFields = useMemo(
         () => [
-            { key: "Title", value: blogpostInfo.title },
-            { key: "Text", value: blogpostInfo.text },
-            { key: "Location", value: blogpostInfo.location },
+            { key: "Title: ", value: blogpostInfo.title },
+            { key: "Text: ", value: blogpostInfo.text },
+            { key: "Location: ", value: blogpostInfo.location },
             {
-                key: "Tags",
+                key: "Tags: ",
                 value:
                     blogpostInfo.tags &&
                     blogpostInfo.tags.map((key) => key.name).join(", "),
             },
             {
-                key: "Comments",
+                key: "Comments: ",
                 value:
                     blogpostInfo.comments &&
                     blogpostInfo.comments.map((key) => key.message).join(", "),
@@ -64,7 +64,7 @@ const Blogpost = () => {
                     </div>
                 </div>
             </nav>
-
+            <br></br><br></br><br></br><br></br>
             <div className="row-between">
                 <h2>{blogpostInfo.name}</h2>
             </div>

@@ -13,6 +13,9 @@ import BlogpostModal from "../components/modals/BlogpostModal";
 import Modal from "react-modal";
 import Input from "../components/Input";
 import Tags from "../components/Tags";
+import { Form, Input as InputAntd, InputNumber } from 'antd';
+import TextArea from "antd/lib/input/TextArea";
+
 
 const AddBlogpost = () => {
     const { getAccessTokenSilently } = useAuth0();
@@ -58,37 +61,42 @@ const AddBlogpost = () => {
 
     return (
         <div>
-            {/*<nav className="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">*/}
-            {/*    <div className="container"><a className="navbar-brand logo" href="#">BlogForPeace</a><button data-toggle="collapse" className="navbar-toggler" data-target="#navcol-1"><span className="sr-only">Toggle navigation</span><span className="navbar-toggler-icon"></span></button>*/}
-            {/*        <div className="collapse navbar-collapse"*/}
-            {/*            id="navcol-1">*/}
-            {/*            <ul className="nav navbar-nav ml-auto">*/}
-            {/*                <li className="nav-item" role="presentation"><a className="nav-link active" href="http://localhost:3000/AddBlogpost">Add Post</a></li>*/}
-            {/*                <li className="nav-item" role="presentation"><a className="nav-link" href="http://localhost:3000/">Blog</a></li>*/}
-            {/*                <li className="nav-item" role="presentation"><a className="nav-link" href="http://localhost:3000/Account">Edit Profile</a></li>*/}
-            {/*            </ul>*/}
-            {/*        </div>*/}
-            {/*    </div>*/}
-            {/*</nav>*/}
+            <br/><br/><br/><br/>
+            <nav className="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
+                <div className="container"><a className="navbar-brand logo" href="#">BlogForPeace</a><button data-toggle="collapse" className="navbar-toggler" data-target="#navcol-1"><span className="sr-only">Toggle navigation</span><span className="navbar-toggler-icon"></span></button>
+                    <div className="collapse navbar-collapse"
+                        id="navcol-1">
+                        <ul className="nav navbar-nav ml-auto">
+                            <li className="nav-item" role="presentation"><a className="nav-link active" href="http://localhost:3000/AddBlogpost">Add Post</a></li>
+                            <li className="nav-item" role="presentation"><a className="nav-link" href="http://localhost:3000/">Blog</a></li>
+                            <li className="nav-item" role="presentation"><a className="nav-link" href="http://localhost:3000/Account">Edit Profile</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
 
             <div className="row-between">
                 <h2>Add blogpost</h2>
             </div>
             <div className="line" />
             <form>
-                <Input label="Title" placeholder="Blogpost title" {...register("title")} />
-                <Input label="Text" placeholder="Blogpost text" {...register("text")} />
+                <Input label="Title: " placeholder="Blogpost title" {...register("title")} />
+                <br/>
+                <Input label="Text: " placeholder="Blogpost text" {...register("text")} />
+                <br/>
                 <Input
-                    label="Location"
+                    label="Location: "
                     placeholder="Relevant location"
                     {...register("location")}
                 />
+                <br/>
                 <Tags
                   tags={tags}
                   setTags={setTags}
-                  label="Tags"
+                  label="Tags:"
                   placeholder="Press enter to save tag"
                 />
+                <br/>
                 <Button type="button" onClick={handleSubmit(handleClick)}>
                     Add blogpost
                 </Button>
