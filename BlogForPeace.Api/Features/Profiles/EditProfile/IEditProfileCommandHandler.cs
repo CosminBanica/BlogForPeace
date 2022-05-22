@@ -2,6 +2,6 @@
 {
     public interface IEditProfileCommandHandler
     {
-        public Task HandleAsync(EditProfileCommand command, CancellationToken cancellationToken);
+        public Task HandleAsync(EditProfileCommand command, string identityId, CancellationToken cancellationToken);
     }
 }

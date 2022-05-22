@@ -30,7 +30,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{5D994487-E935-4B42-BCB3-C359C93EA052}"
 	ProjectSection(SolutionItems) = preProject
 		frontend\src\App.css = frontend\src\App.css
-		frontend\src\App.jsx = frontend\src\App.jsx
+		frontend\src\App.js = frontend\src\App.js
 		frontend\src\App.test.js = frontend\src\App.test.js
 		frontend\src\functions.js = frontend\src\functions.js
 		frontend\src\index.css = frontend\src\index.css
@@ -42,12 +42,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{5D994487-E93
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "components", "components", "{1FC38030-8916-48C9-BE30-DE55914CCC2E}"
 	ProjectSection(SolutionItems) = preProject
-		frontend\src\components\BlogpostCard.jsx = frontend\src\components\BlogpostCard.jsx
-		frontend\src\components\Button.jsx = frontend\src\components\Button.jsx
-		frontend\src\components\Input.jsx = frontend\src\components\Input.jsx
-		frontend\src\components\Section.jsx = frontend\src\components\Section.jsx
-		frontend\src\components\Table.jsx = frontend\src\components\Table.jsx
-		frontend\src\components\Tags.jsx = frontend\src\components\Tags.jsx
+		frontend\src\components\BlogpostCard.js = frontend\src\components\BlogpostCard.js
+		frontend\src\components\Button.js = frontend\src\components\Button.js
+		frontend\src\components\Input.js = frontend\src\components\Input.js
+		frontend\src\components\Section.js = frontend\src\components\Section.js
+		frontend\src\components\Table.js = frontend\src\components\Table.js
+		frontend\src\components\Tags.js = frontend\src\components\Tags.js
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "assets", "assets", "{79E52E80-92B1-4694-9D89-7894E4B1CE3C}"
@@ -64,33 +64,29 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "styling", "styling", "{7327
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "utils", "utils", "{E4F207AB-4614-4A73-9A3D-05707106F21A}"
 	ProjectSection(SolutionItems) = preProject
-		frontend\src\utils\AdminHeader.jsx = frontend\src\utils\AdminHeader.jsx
-		frontend\src\utils\AdminLayout.jsx = frontend\src\utils\AdminLayout.jsx
-		frontend\src\utils\AdminMenu.jsx = frontend\src\utils\AdminMenu.jsx
-		frontend\src\utils\AuthWrapper.jsx = frontend\src\utils\AuthWrapper.jsx
-		frontend\src\utils\Routing.jsx = frontend\src\utils\Routing.jsx
-		frontend\src\utils\UserHeader.jsx = frontend\src\utils\UserHeader.jsx
-		frontend\src\utils\UserLayout.jsx = frontend\src\utils\UserLayout.jsx
+		frontend\src\utils\AuthWrapper.js = frontend\src\utils\AuthWrapper.js
+		frontend\src\utils\Routing.js = frontend\src\utils\Routing.js
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "pages", "pages", "{D591810F-BB54-401F-803B-ACE126E7E3A2}"
+	ProjectSection(SolutionItems) = preProject
+		frontend\src\pages\Account.js = frontend\src\pages\Account.js
+		frontend\src\pages\Blogpost.js = frontend\src\pages\Blogpost.js
+		frontend\src\pages\Blogposts.js = frontend\src\pages\Blogposts.js
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "User", "User", "{894FDF05-E325-4002-AF88-C2CED004B1FE}"
-	ProjectSection(SolutionItems) = preProject
-		frontend\src\pages\User\Account.jsx = frontend\src\pages\User\Account.jsx
-		frontend\src\pages\User\Blogposts.jsx = frontend\src\pages\User\Blogposts.jsx
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Admin", "Admin", "{EB80EC0C-76DB-4936-A656-C447D47E9143}"
 	ProjectSection(SolutionItems) = preProject
-		frontend\src\pages\Admin\Blogposts.jsx = frontend\src\pages\Admin\Blogposts.jsx
+		frontend\src\pages\Admin\Blogposts.js = frontend\src\pages\Admin\Blogposts.js
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "modals", "modals", "{DBE35767-E411-4F32-B509-AFA6976A80F2}"
 	ProjectSection(SolutionItems) = preProject
-		frontend\src\components\modals\AccountModal.jsx = frontend\src\components\modals\AccountModal.jsx
-		frontend\src\components\modals\BlogpostModal.jsx = frontend\src\components\modals\BlogpostModal.jsx
-		frontend\src\components\modals\CommentModal.jsx = frontend\src\components\modals\CommentModal.jsx
+		frontend\src\components\modals\AccountModal.js = frontend\src\components\modals\AccountModal.js
+		frontend\src\components\modals\BlogpostModal.js = frontend\src\components\modals\BlogpostModal.js
+		frontend\src\components\modals\CommentModal.js = frontend\src\components\modals\CommentModal.js
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "configs", "configs", "{3B7E717B-F1AE-4EDB-8066-05EB038C10D4}"
@@ -98,6 +94,127 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "configs", "configs", "{3B7E
 		frontend\src\configs\Api.js = frontend\src\configs\Api.js
 		frontend\src\configs\AuthSettings.js = frontend\src\configs\AuthSettings.js
 		frontend\src\configs\Axios.js = frontend\src\configs\Axios.js
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "bootstrap", "bootstrap", "{E455D82C-A292-41BC-8487-238E63765EA3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "css", "css", "{18612A3A-39AF-4D18-BE27-1BBCF3A2C6D9}"
+	ProjectSection(SolutionItems) = preProject
+		frontend\src\assets\css\smoothproducts.css = frontend\src\assets\css\smoothproducts.css
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "fonts", "fonts", "{A2A84F88-A3CB-4679-8C73-80EB5E26A899}"
+	ProjectSection(SolutionItems) = preProject
+		frontend\src\assets\fonts\fa-brands-400.eot = frontend\src\assets\fonts\fa-brands-400.eot
+		frontend\src\assets\fonts\fa-brands-400.svg = frontend\src\assets\fonts\fa-brands-400.svg
+		frontend\src\assets\fonts\fa-brands-400.ttf = frontend\src\assets\fonts\fa-brands-400.ttf
+		frontend\src\assets\fonts\fa-brands-400.woff = frontend\src\assets\fonts\fa-brands-400.woff
+		frontend\src\assets\fonts\fa-brands-400.woff2 = frontend\src\assets\fonts\fa-brands-400.woff2
+		frontend\src\assets\fonts\fa-regular-400.eot = frontend\src\assets\fonts\fa-regular-400.eot
+		frontend\src\assets\fonts\fa-regular-400.svg = frontend\src\assets\fonts\fa-regular-400.svg
+		frontend\src\assets\fonts\fa-regular-400.ttf = frontend\src\assets\fonts\fa-regular-400.ttf
+		frontend\src\assets\fonts\fa-regular-400.woff = frontend\src\assets\fonts\fa-regular-400.woff
+		frontend\src\assets\fonts\fa-regular-400.woff2 = frontend\src\assets\fonts\fa-regular-400.woff2
+		frontend\src\assets\fonts\fa-solid-900.eot = frontend\src\assets\fonts\fa-solid-900.eot
+		frontend\src\assets\fonts\fa-solid-900.svg = frontend\src\assets\fonts\fa-solid-900.svg
+		frontend\src\assets\fonts\fa-solid-900.ttf = frontend\src\assets\fonts\fa-solid-900.ttf
+		frontend\src\assets\fonts\fa-solid-900.woff = frontend\src\assets\fonts\fa-solid-900.woff
+		frontend\src\assets\fonts\fa-solid-900.woff2 = frontend\src\assets\fonts\fa-solid-900.woff2
+		frontend\src\assets\fonts\font-awesome.min.css = frontend\src\assets\fonts\font-awesome.min.css
+		frontend\src\assets\fonts\fontawesome-all.min.css = frontend\src\assets\fonts\fontawesome-all.min.css
+		frontend\src\assets\fonts\fontawesome-webfont.eot = frontend\src\assets\fonts\fontawesome-webfont.eot
+		frontend\src\assets\fonts\fontawesome-webfont.svg = frontend\src\assets\fonts\fontawesome-webfont.svg
+		frontend\src\assets\fonts\fontawesome-webfont.ttf = frontend\src\assets\fonts\fontawesome-webfont.ttf
+		frontend\src\assets\fonts\fontawesome-webfont.woff = frontend\src\assets\fonts\fontawesome-webfont.woff
+		frontend\src\assets\fonts\fontawesome-webfont.woff2 = frontend\src\assets\fonts\fontawesome-webfont.woff2
+		frontend\src\assets\fonts\FontAwesome.otf = frontend\src\assets\fonts\FontAwesome.otf
+		frontend\src\assets\fonts\fontawesome5-overrides.min.css = frontend\src\assets\fonts\fontawesome5-overrides.min.css
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "img", "img", "{743B0A0E-F224-48C8-8C37-3DEF31ACB206}"
+	ProjectSection(SolutionItems) = preProject
+		frontend\src\assets\img\img.jpg = frontend\src\assets\img\img.jpg
+		frontend\src\assets\img\profile.png = frontend\src\assets\img\profile.png
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "js", "js", "{EA2B2181-280D-46B5-86D5-5B8E972CF031}"
+	ProjectSection(SolutionItems) = preProject
+		frontend\src\assets\js\jquery.min.js = frontend\src\assets\js\jquery.min.js
+		frontend\src\assets\js\smoothproducts.min.js = frontend\src\assets\js\smoothproducts.min.js
+		frontend\src\assets\js\theme.js = frontend\src\assets\js\theme.js
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "css", "css", "{58612F05-E33E-4E49-A3F5-F700789AD421}"
+	ProjectSection(SolutionItems) = preProject
+		frontend\src\assets\bootstrap\css\bootstrap.min.css = frontend\src\assets\bootstrap\css\bootstrap.min.css
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "js", "js", "{8B286452-F919-45C0-9EB9-D097EC12F59A}"
+	ProjectSection(SolutionItems) = preProject
+		frontend\src\assets\bootstrap\js\bootstrap.min.js = frontend\src\assets\bootstrap\js\bootstrap.min.js
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "assets", "assets", "{1EB2C4BF-A143-4493-80D3-EB7261D0C86A}"
+	ProjectSection(SolutionItems) = preProject
+		frontend\public\assets\logo.svg = frontend\public\assets\logo.svg
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "bootstrap", "bootstrap", "{BB8C1671-9233-43BD-A76D-22B431ABEB23}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "css", "css", "{790323C0-EBAD-4F44-BA70-AD9E53368F59}"
+	ProjectSection(SolutionItems) = preProject
+		frontend\public\assets\css\smoothproducts.css = frontend\public\assets\css\smoothproducts.css
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "fonts", "fonts", "{AF82B923-095C-4ED8-BFDF-AF45369E8D11}"
+	ProjectSection(SolutionItems) = preProject
+		frontend\public\assets\fonts\fa-brands-400.eot = frontend\public\assets\fonts\fa-brands-400.eot
+		frontend\public\assets\fonts\fa-brands-400.svg = frontend\public\assets\fonts\fa-brands-400.svg
+		frontend\public\assets\fonts\fa-brands-400.ttf = frontend\public\assets\fonts\fa-brands-400.ttf
+		frontend\public\assets\fonts\fa-brands-400.woff = frontend\public\assets\fonts\fa-brands-400.woff
+		frontend\public\assets\fonts\fa-brands-400.woff2 = frontend\public\assets\fonts\fa-brands-400.woff2
+		frontend\public\assets\fonts\fa-regular-400.eot = frontend\public\assets\fonts\fa-regular-400.eot
+		frontend\public\assets\fonts\fa-regular-400.svg = frontend\public\assets\fonts\fa-regular-400.svg
+		frontend\public\assets\fonts\fa-regular-400.ttf = frontend\public\assets\fonts\fa-regular-400.ttf
+		frontend\public\assets\fonts\fa-regular-400.woff = frontend\public\assets\fonts\fa-regular-400.woff
+		frontend\public\assets\fonts\fa-regular-400.woff2 = frontend\public\assets\fonts\fa-regular-400.woff2
+		frontend\public\assets\fonts\fa-solid-900.eot = frontend\public\assets\fonts\fa-solid-900.eot
+		frontend\public\assets\fonts\fa-solid-900.svg = frontend\public\assets\fonts\fa-solid-900.svg
+		frontend\public\assets\fonts\fa-solid-900.ttf = frontend\public\assets\fonts\fa-solid-900.ttf
+		frontend\public\assets\fonts\fa-solid-900.woff = frontend\public\assets\fonts\fa-solid-900.woff
+		frontend\public\assets\fonts\fa-solid-900.woff2 = frontend\public\assets\fonts\fa-solid-900.woff2
+		frontend\public\assets\fonts\font-awesome.min.css = frontend\public\assets\fonts\font-awesome.min.css
+		frontend\public\assets\fonts\fontawesome-all.min.css = frontend\public\assets\fonts\fontawesome-all.min.css
+		frontend\public\assets\fonts\fontawesome-webfont.eot = frontend\public\assets\fonts\fontawesome-webfont.eot
+		frontend\public\assets\fonts\fontawesome-webfont.svg = frontend\public\assets\fonts\fontawesome-webfont.svg
+		frontend\public\assets\fonts\fontawesome-webfont.ttf = frontend\public\assets\fonts\fontawesome-webfont.ttf
+		frontend\public\assets\fonts\fontawesome-webfont.woff = frontend\public\assets\fonts\fontawesome-webfont.woff
+		frontend\public\assets\fonts\fontawesome-webfont.woff2 = frontend\public\assets\fonts\fontawesome-webfont.woff2
+		frontend\public\assets\fonts\FontAwesome.otf = frontend\public\assets\fonts\FontAwesome.otf
+		frontend\public\assets\fonts\fontawesome5-overrides.min.css = frontend\public\assets\fonts\fontawesome5-overrides.min.css
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "img", "img", "{DEED161A-4CA8-4E57-9185-CDCE6649CBDE}"
+	ProjectSection(SolutionItems) = preProject
+		frontend\public\assets\img\img.jpg = frontend\public\assets\img\img.jpg
+		frontend\public\assets\img\profile.png = frontend\public\assets\img\profile.png
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "js", "js", "{D13D52B8-5103-4843-A5D6-1CDDE2D98ACF}"
+	ProjectSection(SolutionItems) = preProject
+		frontend\public\assets\js\jquery.min.js = frontend\public\assets\js\jquery.min.js
+		frontend\public\assets\js\smoothproducts.min.js = frontend\public\assets\js\smoothproducts.min.js
+		frontend\public\assets\js\theme.js = frontend\public\assets\js\theme.js
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "css", "css", "{8E56779F-25D1-446B-BBCF-145BF1BD4C10}"
+	ProjectSection(SolutionItems) = preProject
+		frontend\public\assets\bootstrap\css\bootstrap.min.css = frontend\public\assets\bootstrap\css\bootstrap.min.css
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "js", "js", "{B60C17F9-33B1-4320-92E7-CFD8F340F179}"
+	ProjectSection(SolutionItems) = preProject
+		frontend\public\assets\bootstrap\js\bootstrap.min.js = frontend\public\assets\bootstrap\js\bootstrap.min.js
 	EndProjectSection
 EndProject
 Global
@@ -134,6 +251,21 @@ Global
 		{EB80EC0C-76DB-4936-A656-C447D47E9143} = {D591810F-BB54-401F-803B-ACE126E7E3A2}
 		{DBE35767-E411-4F32-B509-AFA6976A80F2} = {1FC38030-8916-48C9-BE30-DE55914CCC2E}
 		{3B7E717B-F1AE-4EDB-8066-05EB038C10D4} = {5D994487-E935-4B42-BCB3-C359C93EA052}
+		{E455D82C-A292-41BC-8487-238E63765EA3} = {79E52E80-92B1-4694-9D89-7894E4B1CE3C}
+		{18612A3A-39AF-4D18-BE27-1BBCF3A2C6D9} = {79E52E80-92B1-4694-9D89-7894E4B1CE3C}
+		{A2A84F88-A3CB-4679-8C73-80EB5E26A899} = {79E52E80-92B1-4694-9D89-7894E4B1CE3C}
+		{743B0A0E-F224-48C8-8C37-3DEF31ACB206} = {79E52E80-92B1-4694-9D89-7894E4B1CE3C}
+		{EA2B2181-280D-46B5-86D5-5B8E972CF031} = {79E52E80-92B1-4694-9D89-7894E4B1CE3C}
+		{58612F05-E33E-4E49-A3F5-F700789AD421} = {E455D82C-A292-41BC-8487-238E63765EA3}
+		{8B286452-F919-45C0-9EB9-D097EC12F59A} = {E455D82C-A292-41BC-8487-238E63765EA3}
+		{1EB2C4BF-A143-4493-80D3-EB7261D0C86A} = {01DFF2A6-890E-45A6-AE38-1A40916CC383}
+		{BB8C1671-9233-43BD-A76D-22B431ABEB23} = {1EB2C4BF-A143-4493-80D3-EB7261D0C86A}
+		{790323C0-EBAD-4F44-BA70-AD9E53368F59} = {1EB2C4BF-A143-4493-80D3-EB7261D0C86A}
+		{AF82B923-095C-4ED8-BFDF-AF45369E8D11} = {1EB2C4BF-A143-4493-80D3-EB7261D0C86A}
+		{DEED161A-4CA8-4E57-9185-CDCE6649CBDE} = {1EB2C4BF-A143-4493-80D3-EB7261D0C86A}
+		{D13D52B8-5103-4843-A5D6-1CDDE2D98ACF} = {1EB2C4BF-A143-4493-80D3-EB7261D0C86A}
+		{8E56779F-25D1-446B-BBCF-145BF1BD4C10} = {BB8C1671-9233-43BD-A76D-22B431ABEB23}
+		{B60C17F9-33B1-4320-92E7-CFD8F340F179} = {BB8C1671-9233-43BD-A76D-22B431ABEB23}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {160B64A2-9BE0-4E5B-8D98-FA41B4AA1EC2}
