@@ -20,8 +20,6 @@ services:
             MSSQL_PID: Express
         volumes:
             - db-volume:/var/opt/mssql
-        ports:
-            - 1433:1433
         networks:
             - bl_db
 
@@ -29,7 +27,7 @@ services:
         image: elrego1/blog_for_peace:latest
         deploy:
             mode: replicated
-            replicas: 2
+            replicas: 1
             placement:
                 max_replicas_per_node: 1
             update_config:
@@ -38,9 +36,6 @@ services:
             rollback_config:
                 parallelism: 1
                 order: start-first
-        ports:
-            - "80:80"
-            - "7152:7152"
         networks:
             - bl_db
             - bl_mqtt
