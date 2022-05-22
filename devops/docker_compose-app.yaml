@@ -27,7 +27,7 @@ services:
         image: elrego1/blog_for_peace:latest
         deploy:
             mode: replicated
-            replicas: 2
+            replicas: 3
             placement:
                 max_replicas_per_node: 1
             update_config:
@@ -49,7 +49,7 @@ services:
         image: elrego1/blog_frontend:latest
         deploy:
             mode: replicated
-            replicas: 2
+            replicas: 3
             placement:
                 max_replicas_per_node: 1
             update_config:
