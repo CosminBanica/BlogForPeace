@@ -3,8 +3,8 @@ const routes = {
     blogposts: {
         addBlogpost: "Blogposts/addBlogpost",
         getAll: "Blogposts/viewAllBlogposts",
-        getBlogpost: (id) => `Books/viewBlogpost/${id}`,
-        editBlogpost: (id) => `Books/editBlogpost`,
+        getBlogpost: (id) => `Blogposts/viewBlogpost/${id}`,
+        editBlogpost: (id) => `Blogposts/editBlogpost`,
     },
     comments: {
         addComment: "Comments/addComment",

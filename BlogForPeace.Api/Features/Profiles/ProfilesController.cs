@@ -76,7 +76,14 @@ namespace BlogForPeace.Api.Features.Profiles
         [Authorize]
         public async Task<IActionResult> EditProfile([FromBody] EditProfileCommand command, CancellationToken cancellationToken)
         {
-            await editProfileCommandHandler.HandleAsync(command, cancellationToken);
+            var identityId = User.GetUserIdentityId();
+
+            if (identityId == null)
+            {
+                return Unauthorized();
+            }
+
+            await editProfileCommandHandler.HandleAsync(command, identityId, cancellationToken);
 
             return Ok();
         }
