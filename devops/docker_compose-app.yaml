@@ -55,6 +55,9 @@ services:
         volumes:
             - mosquitto_data:/mosquitto/data
             - mosquitto_log:/mosquitto/log
+        ports:
+            - "1883:1883"
+            - "9001:9001"
         networks:
             - bl_mqtt
             - proxy_mqtt
@@ -118,16 +121,15 @@ services:
             # public HTTPS Port:
             # - "443:443"
             # testing port
-            - "7152:7152"
+            # - "7152:7152"
 
-            # MQTT ports
-            - "1883:1883"
-            - "9001:9001"
+            # # MQTT ports
+            # - "1883:1883"
+            # - "9001:9001"
         networks:
             - proxy_proxy-db
             - proxy_bl
             - proxy_mqtt
-
 
 volumes:
     db-volume:
